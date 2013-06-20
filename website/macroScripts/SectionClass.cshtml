@@ -1,0 +1,13 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    string strSectionClass = Helper.GetSectionClass(Model);
+    if (Model.NodeTypeAlias != "FrontPage")
+    {
+        strSectionClass += " " + "sub";
+        strSectionClass = strSectionClass.Trim();        
+    }
+    if (!String.IsNullOrEmpty(strSectionClass))
+    {
+@: @strSectionClass 
+}}

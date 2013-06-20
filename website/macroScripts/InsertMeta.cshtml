@@ -1,0 +1,15 @@
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    var description = Model._metaDescription;
+    if(!String.IsNullOrEmpty(description))
+    {
+        @: <meta name="description" content="@description" />
+    }
+    
+    var keywords = Model._metaKeywords;
+    if (!String.IsNullOrEmpty(keywords))
+    {
+        @: <meta name="keywords" content="@keywords" />
+    }
+    
+}

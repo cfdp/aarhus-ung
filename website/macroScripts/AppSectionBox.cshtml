@@ -1,0 +1,20 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    string strAppStoreUrl = Model.HasValue("appStoreURL") ? Model.GetProperty("appStoreURL").Value : String.Empty;
+    string strGooglePlayUrl = Model.HasValue("googlePlayURL") ? Model.GetProperty("googlePlayURL").Value : String.Empty;
+    
+    @:<div class="grid_1 app_box">
+    if (!String.IsNullOrEmpty(strAppStoreUrl))
+    {
+        @:<a href="@strAppStoreUrl" class="app-ios"></a>
+    }
+    if (!String.IsNullOrEmpty(strGooglePlayUrl))
+    {
+        @:<a href="@strGooglePlayUrl" class="app-an"></a>
+    }        
+    @:<div class="stripe"></div>
+    @:</div>
+    
+    
+}

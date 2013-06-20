@@ -1,0 +1,33 @@
+﻿@using umbraco.MacroEngines;
+@using System.Text.RegularExpressions;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@try
+{
+    string strVideoURL = Model.HasValue("videoURL") ? Model.GetProperty("videoURL").Value : String.Empty;
+    if (!String.IsNullOrEmpty(strVideoURL))
+    {
+        //Get video id:
+        Regex rx = new Regex("^.+\\?v=([^&]+).*$", RegexOptions.IgnoreCase);
+        string strV = rx.Replace(strVideoURL, "$1");
+        
+        <div id="about-video" class="media_wrapper"></div>
+        <script type="text/javascript">
+            // <![CDATA[
+            $(function () {
+                $("#about-video").tubeplayer({
+                    width: 600,
+                    initialVideo: @Html.Raw(@Json.Encode(strV))
+                });
+            });
+            // ]]>
+        </script>
+    }
+    
+
+}
+catch (Exception e)
+{ 
+    @:<!--
+    @:@Html.Raw(e.Message + "\n" + e.StackTrace)
+    @:-->
+}

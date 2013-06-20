@@ -1,0 +1,930 @@
+﻿@charset "utf-8";
+/* CSS Document for Arhus Ung Mobile v.1.0 */
+
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+    ol li,
+    ul li {
+        margin: 0 0 0 15px;
+        padding: 0;
+    }
+
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* ---- End of reset styles -----*/
+
+@font-face {
+    font-family: 'proxima_nova_rgbold';
+    src: url('fonts/proximanova-bold-webfont.eot');
+    src: url('fonts/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-bold-webfont.woff') format('woff'),
+         url('fonts/proximanova-bold-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'maven_pro';
+    src: url('fonts/mavenpro-regular.eot');
+    src: url('fonts/mavenpro-regular.eot?#iefix') format('embedded-opentype'), url('fonts/mavenpro-regular.woff') format('woff'), url('fonts/mavenpro-regular.ttf') format('truetype'), url('fonts/mavenpro-regular.svg#maven_pro') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background: #fff url(images/bg-viewport.png) top center repeat;
+    background-size: cover;
+}
+/*Typography */
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'maven_pro', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+/* Header Styles 
+========================================== */
+.header {
+    height: 54px;
+    background: #fff;
+    text-align: center;
+}
+
+    .header .title {
+        display: block;
+        vertical-align: middle;
+        height: 100%;
+        width: 100%;
+        padding: 5px 80px;
+        text-align: center;
+        font-family: 'proxima_nova_rgbold';
+        color: #000;
+        font-weight: normal;
+        text-align: center;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+        .header .title h1 {
+            display: table;
+            font-family: 'proxima_nova_rgbold';
+            color: #000;
+            font-size: 16px;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+        }
+
+            .header .title h1 span {
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+                width: 100%;
+                height: 100%;
+                font-size: 16px;
+                /* word-splitting: */
+                -ms-word-break: break-all;
+                word-break: break-all;
+                word-break: break-word;
+                -webkit-hyphens: auto;
+                -moz-hyphens: auto;
+                hyphens: auto;
+                /* --- */
+            }
+
+
+a.logo img {
+    width: 95px;
+    height: 47px;
+}
+
+a.logo .ui-btn-inner {
+    font-size: 12.5px;
+    padding: 0;
+    margin-left: 5px;
+}
+
+a.fb {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 62px;
+    height: 27px;
+    background: #2b2d30;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-right: 5px;
+    text-decoration: none;
+}
+
+
+a.back {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 62px;
+    height: 27px;
+    background: #2b2d30;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-right: 5px;
+    text-decoration: none;
+}
+
+.ui-header .ui-btn {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.ui-header a.back.ui-btn-left {
+    left: 15px;
+}
+
+.ui-header-fixed a.back.ui-btn-left {
+    top: 14px;
+}
+
+a.back.ui-btn-left .ui-btn-inner {
+    padding: 7px 3px;
+}
+
+a.back .ui-btn-text {
+    color: #FFFFFF;
+    font-family: 'proxima_nova_rgbold';
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+
+
+
+.ui-header-fixed a.fb.ui-btn-right {
+    top: 14px;
+}
+
+.ui-header a.fb.ui-btn-right {
+    right: 15px;
+}
+
+a.fb .ui-btn-text {
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    font-family: 'proxima_nova_rgbold';
+    font-weight: normal;
+}
+
+a.fb.ui-btn-right .ui-btn-inner {
+    padding: 7px 8px 6px 0;
+    padding-left: 30px;
+}
+
+a.fb .ui-icon {
+    height: 27px;
+    width: 23px;
+}
+
+a.fb.ui-btn-icon-left > .ui-btn-inner > .ui-icon {
+    margin-top: 0;
+    position: absolute;
+    top: 0;
+}
+
+.ui-header a.fb.ui-btn-icon-left .ui-icon {
+    left: 0;
+}
+
+.ui-icon-fb {
+    background: url(images/fb.png) center center no-repeat;
+    background-size: 8px;
+    border-right: 1px solid #5d5d5d;
+}
+
+
+
+a.back {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 62px;
+    height: 27px;
+    background: #2b2d30;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-right: 5px;
+    text-decoration: none;
+}
+
+.ui-header a.back.ui-btn-left {
+    left: 15px;
+}
+
+.ui-header-fixed a.back.ui-btn-left {
+    top: 14px;
+}
+
+a.back.ui-btn-left .ui-btn-inner {
+    padding: 7px 3px;
+}
+
+a.back .ui-btn-text {
+    color: #FFFFFF;
+    font-family: 'proxima_nova_rgbold';
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#slider-code {
+    overflow: hidden;
+    background: transparent url(images/bg-topicons.png) 0 0 repeat-x;
+    background-size: contain;
+    position: relative;
+    margin: -15px -15px 15px -15px;
+}
+
+    #slider-code .viewport { /* div */
+        float: left;
+        height: 112px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #slider-code .overview { /* ul */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        #slider-code .overview li {
+            float: left;
+            margin:  15px 0 0 0;
+            padding: 0;
+            width: 98px;
+            border: none;
+        }
+
+            #slider-code .overview li.first-item {
+                margin-left: 8px;
+            }
+
+            #slider-code .overview li.last-item {
+                width: 113px;
+            }
+
+            #slider-code .overview li .slider-item-content {
+                display: block;
+                color: #fff;
+                height: 83px;
+                position: relative;
+            }
+
+            #slider-code .overview li a.item-link {
+                text-decoration: none;
+                border: none;
+                color: #fff;
+                display: block;
+                margin-left: 7px;
+                height: 100%;
+                position: relative;
+                background: #000;
+            }
+
+            #slider-code .overview li.last-item a.item-link {
+                margin-right: 15px;
+            }
+
+                #slider-code .overview li a.item-link.active {
+                    background: #24272a;
+                }
+
+            #slider-code .overview li .img {
+                display: block;
+            }
+
+            #slider-code .overview li img {
+                width: 100%;
+                height: auto;
+            }
+
+            #slider-code .overview li .text {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                line-height: 26px;
+                font-size: 12px;
+                font-family: 'proxima_nova_rgbold';
+            }
+
+
+.buttons {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}            
+
+.buttons li {
+    width: 100%;
+    margin: 0 0 5px 0;
+    padding: 0;
+}
+
+    .buttons li a {
+        width: 100%;
+        height: 44px;
+        text-decoration: none;
+        color: #fff;
+        background: #ccc url(images/bg-button.png) 0 0 repeat-x;
+        font-family: 'proxima_nova_rgbold';
+        font-weight: normal;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        line-height: 34px;
+        text-align: left;
+        padding: 5px;
+        font-size: 16px;
+        display: table;
+        width: 100%;
+    }
+
+        /*.buttons li a:active,*/
+        .buttons li a.active {
+            background-image: url(images/bg-button-active.png);
+        }
+
+        .buttons li a span.title {
+            display: table-cell;
+            vertical-align: middle;
+            min-width: 50%;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'proxima_nova_rgbold';
+            font-weight: normal;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            line-height: 16px;
+        }
+
+        .buttons li a span.sub {
+            display: table-cell;
+            text-align: right;
+            vertical-align: middle;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'maven_pro';
+            font-weight: normal;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font-size: 14px;
+            line-height: 14px;
+            padding-left: 10px;
+            min-width: 100px;
+            /* word-splitting: */
+            -ms-word-break: break-all;
+            word-break: break-all;
+            word-break: break-word;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            hyphens: auto;
+            /* --- */
+        }
+
+        
+/*.buttons .section1 a,
+.contactButtons .section1 a {
+    background-color: #1a3d68;
+}
+
+.buttons .section2 a,
+.contactButtons .section2 a {
+    background-color: #ffaf00;
+}
+
+.buttons .section3 a,
+.contactButtons .section3 a {
+    background-color: #5f9529;
+}
+
+.buttons .section4 a,
+.contactButtons .section4 a {
+    background-color: #c8252c;
+}
+
+.buttons .section5 a,
+.contactButtons .section5 a {
+    background-color: #615ad2;
+}
+
+.buttons .section6 a,
+.contactButtons .section6 a {
+    background-color: #ff6c00;
+}*/
+
+
+
+ul.contactButtons {
+    margin: 10px 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    width: 100%;
+}
+
+    ul.contactButtons li {
+        margin: 0;
+        padding: 0 0 0 5px;
+        display: inline-block;
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    ul.contactButtons.b li {
+        width: 50%;
+    }
+
+    ul.contactButtons.c li {
+        width: 33.3333%;
+    }
+
+    ul.contactButtons.d li {
+        width: 25%;
+    }
+
+    ul.contactButtons li:first-child {
+        padding-left: 0;
+    }
+
+
+    ul.contactButtons li a {
+        display: block;
+        height: 30px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        line-height: 30px;
+        white-space: nowrap;
+        text-indent: 100px;
+        overflow: hidden;
+        text-align: center;
+        background: #ccc url(images/bg-button.png) 0 0 repeat-x;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+
+        /*ul.contactButtons li a:active,*/
+        ul.contactButtons li a.active {
+            background-color: #000;
+        }
+
+        ul.contactButtons li a span {
+            background-color: transparent;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: block;
+            line-height: 30px;
+        }
+
+    ul.contactButtons li.www a span {
+        background-image: url(images/contact-www.png);
+    }
+
+    ul.contactButtons li.phone a span {
+        background-image: url(images/contact-phone.png);
+    }
+
+    ul.contactButtons li.email a span {
+        background-image: url(images/contact-email.png);
+    }
+
+    ul.contactButtons li.map a span {
+        background-image: url(images/contact-map.png);
+    }
+
+
+
+.footerLinks {
+    width: 100%;
+    background: url(images/footerbg.jpg) top left repeat-x;
+    background-size: auto 50px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+    .footerLinks li {
+        margin: 0;
+        padding: 0;
+        width: 33.3333%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        float: left;
+        display: block;
+        height: 50px;
+        border-left: 1px solid #24272a;
+    }
+
+        .footerLinks li:first-child {
+            border-left: none;
+        }
+
+        .footerLinks li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 5px;
+            overflow: hidden;
+            background: #000;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            line-height: 11px;
+        }
+
+        .footerLinks li.help a {
+            background: #000 url(images/help.png) bottom center no-repeat;
+            background-size: auto 25px;
+        }
+
+
+        .footerLinks li a.active {
+            background-color: transparent;
+        }
+
+        .footerLinks li a span.title {
+            text-decoration: none;
+            color: #fff;
+            font-family: 'proxima_nova_rgbold';
+            font-weight: normal;
+            font-size: 11px;
+            line-height: 11px;
+            display: block;
+        }
+
+        .footerLinks li a span.sub {
+            text-decoration: none;
+            color: #fff;
+            font-family: 'maven_pro';
+            font-weight: normal;
+            font-size: 10px;
+            line-height: 10px;
+        }
+
+
+
+
+.textContent {
+    margin: 0 -15px 15px -15px;
+    padding: 15px;
+    background: #545454;
+    color: #fff;
+    font-family: 'maven_pro';
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+    .textContent h1 {
+        /*font-size: 17px;*/
+        font-family: 'proxima_nova_rgbold', Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 0.08em;
+    }
+
+    .textContent ul {
+        list-style: disc;
+        margin-bottom: 15px;
+        margin-left: 20px;
+    }
+
+    .textContent ol {
+        list-style: decimal;
+        margin-bottom: 15px;
+        margin-left: 20px;
+    }
+
+    .textContent p {
+        margin-bottom: 15px;
+    }
+
+    .textContent a {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+
+
+.images {
+    border-width: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 0;
+    margin: -15px -15px 10px -15px;
+    white-space: nowrap;
+    height: 150px;
+    display: block;
+    position: relative;
+}
+
+    .images img {
+        height: auto;
+        width: 100%;
+    }
+
+    .images .royalSlider {
+        position: absolute;
+        direction: ltr;
+    }
+
+    .images span.logo {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        padding: 3px;
+        background: #fff;
+        white-space: nowrap;
+    }
+
+        .images span.logo img {
+            width: 80px;
+            height: auto;
+            display: block;
+        }
+
+.media {
+    margin: -15px -15px 0 -15px;
+    height: 150px;
+}
+
+.aboutlogo {
+    margin: 20px 0;
+}
+
+
+.people {
+    list-style-type: none;
+}
+
+    .people li {
+        display: block;
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+    }
+
+        .people li img {
+            width: 62px;
+            height: auto;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .people li p {
+            font-size: 14px;
+            color: #000;
+            line-height: 18px;
+        }
+
+            .people li p a {
+                font-size: 14px;
+                color: #0600ff;
+                line-height: 18px;
+            }
+
+
+
+
+
+.ui-header,
+.ui-footer {
+    z-index: 100;
+}
+
+
+
+
+
+.ui-loader-background {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+    position: fixed;
+    z-index: 200;
+}
+
+.ui-loading .ui-loader-background {
+    display: block;
+}
+
+
+
+.ajax-loading .ui-loader-background {
+    display: block !important;
+}
+
+.ajax-loading .ui-loader {
+    display: block;
+}
+
+
+
+
+
+
+.field {
+    width: 100%;
+    margin: 0 0 15px 0;
+    float: left;
+}
+
+    .field label {
+        font-family: 'maven_pro';
+        color: #000;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: normal;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .field div.ui-input-text input.ui-input-text {
+        font-family: 'maven_pro';
+        color: #000;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: normal;
+        display: block;
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 45px;
+        line-height: 35px;
+        padding: 5px 10px;
+        background: #f7f7f7;
+        border: 1px solid #d6d6d6;
+        -moz-box-shadow: inset 3px 3px 5px #e3e3e3;
+        -webkit-box-shadow: inset 3px 3px 5px #e3e3e3;
+        box-shadow: inset 3px 3px 5px #e3e3e3;
+    }
+
+        .field div.ui-input-text input.ui-input-text:focus,
+        .field textarea:focus {
+            border: 1px solid #000000;
+        }
+
+    .field textarea {
+        font-family: 'maven_pro';
+        color: #000!important;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: normal;
+        display: block;
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 150px;
+        line-height: 24px;
+        padding: 10px;
+        background: #f7f7f7;
+        border: 1px solid #d6d6d6;
+        -moz-box-shadow: inset 3px 3px 5px #e3e3e3;
+        -webkit-box-shadow: inset 3px 3px 5px #e3e3e3;
+        box-shadow: inset 3px 3px 5px #e3e3e3;
+    }
+
+/*some overides of jQuery*/
+div.ui-input-text {
+    padding: 0;
+}
+
+.ui-input-search, div.ui-input-text {
+    background-image: none;
+    margin: 0;
+    position: relative;
+}
+
+.field .ui-btn {
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #000;
+    border: none;
+    height: 40px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 39px;
+    font-family: 'proxima_nova_rgbold';
+    font-size: 21px;
+    color: #FFF;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+}
+
+.field .ui-btn-inner {
+    display: block;
+    font-size: 16px;
+    min-width: 0.75em;
+    overflow: hidden;
+    padding: 1px 20px;
+    height: 39px;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shadow {
+    box-shadow: 0 10px 15px #dbdbdb;
+    -moz-box-shadow: 0 10px 15px #dbdbdb;
+    -webkit-box-shadow: 0 10px 15px #dbdbdb;
+}

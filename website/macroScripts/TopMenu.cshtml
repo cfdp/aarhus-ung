@@ -1,0 +1,58 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@try
+{
+    var parent = Model.AncestorOrSelf("FrontPage");
+    if (parent != null)
+    {
+        var mySectionNodes = parent.Section.Where("Visible");
+        int c = mySectionNodes.Count();
+        if (c > 0)
+        {
+            
+            int i = 1;
+            
+            @:<ul class="menu">
+            foreach (var myNode in mySectionNodes)
+            {
+                string strClass = Helper.NodeIsAncestor(Model, myNode) ? "current" : String.Empty;
+                string strSectionClass = Helper.GetSectionClass(myNode);
+                string strSectionColor = Helper.GetSectionColor(myNode);
+                
+                string strData = !String.IsNullOrEmpty(strSectionColor) ? " data-c=\"" + strSectionColor + "\"" : String.Empty;
+                
+                
+                if (!String.IsNullOrEmpty(strSectionClass)) 
+                {
+                    strClass += " " + strSectionClass;
+                }
+                
+                if (i == 1) {
+                    strClass += " first";
+                }
+                if (i == c) {
+                    strClass += " last";
+                }
+                
+                strClass = strClass.Trim();
+                if (!String.IsNullOrEmpty(strClass))
+                {
+                    strClass = " class=\"" + strClass + "\"";
+                }
+
+                string strAppTitle = myNode.HasValue("appSectionText") ? myNode.GetProperty("appSectionText").Value : String.Empty;
+                
+                @:<li@(@Html.Raw(strClass))><a href="@Helper.GetUrl(myNode)" title="@strAppTitle"@Html.Raw(@strData)><span>@Helper.GetName(myNode, true)</span></a></li>
+
+                i++;
+            }
+            @:</ul>
+        }
+    }
+}
+catch (Exception e)
+{ 
+    @:<!--
+    @:@Html.Raw(e.Message + "\n" + e.StackTrace)
+    @:-->
+}

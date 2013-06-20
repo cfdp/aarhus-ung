@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>UmbracoPathFix.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>UmbracoPathFix.dll</orgName>
+    </file>
+    <file>
+      <guid>UmbracoPathFix.pdb</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>UmbracoPathFix.pdb</orgName>
+    </file>
+    <file>
+      <guid>FixPaths.css</guid>
+      <orgPath>/App_Plugins/PathFixup</orgPath>
+      <orgName>FixPaths.css</orgName>
+    </file>
+    <file>
+      <guid>FixPaths.js</guid>
+      <orgPath>/App_Plugins/PathFixup</orgPath>
+      <orgName>FixPaths.js</orgName>
+    </file>
+    <file>
+      <guid>PathFixDashboard.ascx</guid>
+      <orgPath>/App_Plugins/PathFixup</orgPath>
+      <orgName>PathFixDashboard.ascx</orgName>
+    </file>
+    <file>
+      <guid>tools.png</guid>
+      <orgPath>/App_Plugins/PathFixup</orgPath>
+      <orgName>tools.png</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>PathFixup</name>
+      <version>1.0.2</version>
+      <license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+      <url>https://bitbucket.org/Shandem/umbraco-path-fixup</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Shannon Deminick</name>
+      <website>http://shazwazza.com</website>
+    </author>
+    <readme><![CDATA[This is a developer dashboard control to fix database issues based on this bug in the issue tracker:
+
+http://issues.umbraco.org/issue/U4-1491
+
+]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions>
+    <Action runat="install" undo="true" alias="addDashboardSection" dashboardAlias="DeveloperUtilities">
+      <section>
+        <areas>
+          <area>developer</area>
+        </areas>
+        <tab caption="Utilities">
+          <control showOnce="false" addPanel="true" panelCaption="">
+        /App_Plugins/PathFixup/PathFixDashboard.ascx
+      </control>
+        </tab>
+      </section>
+    </Action>
+  </Actions>
+</umbPackage>

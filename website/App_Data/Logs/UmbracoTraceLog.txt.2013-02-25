@@ -1,0 +1,88 @@
+2013-02-25 08:01:17,032 [5] INFO  Umbraco.Core.CoreBootManager - [Thread 1] Umbraco application starting
+2013-02-25 08:01:17,125 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2013-02-25 08:01:17,156 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 18ms)
+2013-02-25 08:01:17,734 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 5 (took 561ms)
+2013-02-25 08:01:17,749 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IDataType, found 79 (took 5ms)
+2013-02-25 08:01:17,749 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IMacroGuiRendering, found 13 (took 3ms)
+2013-02-25 08:01:17,765 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IPackageAction, found 43 (took 3ms)
+2013-02-25 08:01:17,765 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IAction, found 38 (took 3ms)
+2013-02-25 08:01:17,765 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 3ms)
+2013-02-25 08:01:17,780 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 3ms)
+2013-02-25 08:01:17,999 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 4ms)
+2013-02-25 08:01:17,999 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 3ms)
+2013-02-25 08:01:18,014 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 17 (took 3ms)
+2013-02-25 08:01:18,046 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplication, found 7 (took 11ms)
+2013-02-25 08:01:18,092 [5] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.ITree, found 27 (took 5ms)
+2013-02-25 08:01:18,389 [5] INFO  Umbraco.Core.CoreBootManager - [Thread 1] Umbraco application startup complete (took 1331ms)
+2013-02-25 08:01:31,103 [5] INFO  Umbraco.Core.PluginManager - [Thread 10] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 6ms)
+2013-02-25 08:01:31,118 [5] INFO  Umbraco.Core.PluginManager - [Thread 10] Completed resolution of types of umbraco.interfaces.IAction, found 38 (took 0ms)
+2013-02-25 08:01:31,337 [5] INFO  Umbraco.Core.PluginManager - [Thread 10] Completed resolution of types of umbraco.interfaces.ITree, found 45 (took 5ms)
+2013-02-25 08:05:29,861 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 18] Couldn't find any page with nodeId=1242. This is most likely caused by the page not being published.
+2013-02-25 08:05:29,877 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 18] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 08:05:29,877 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 18] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 08:21:50,729 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 14] Couldn't find any page with nodeId=1241. This is most likely caused by the page not being published.
+2013-02-25 08:21:50,729 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 14] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 08:21:50,729 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 14] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 08:27:01,372 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 32] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 08:27:01,372 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 32] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 08:42:27,998 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 35] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 08:42:27,998 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 35] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 09:06:59,143 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 14] Couldn't find any page with nodeId=1228. This is most likely caused by the page not being published.
+2013-02-25 09:06:59,159 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 14] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 09:06:59,159 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 14] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 10:32:48,650 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 14] Couldn't find any page with nodeId=1234. This is most likely caused by the page not being published.
+2013-02-25 10:32:48,665 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 14] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 10:32:48,665 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 14] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:00:37,447 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 61] Couldn't find any page with nodeId=1235. This is most likely caused by the page not being published.
+2013-02-25 11:00:37,447 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 61] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:00:37,447 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 61] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:19:01,913 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 48] Couldn't find any page with nodeId=1169. This is most likely caused by the page not being published.
+2013-02-25 11:19:01,913 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 48] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:19:01,913 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 48] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:21:47,788 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 89] Couldn't find any page with nodeId=1167. This is most likely caused by the page not being published.
+2013-02-25 11:21:47,788 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 89] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:21:47,788 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 89] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:25:02,352 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 29] Couldn't find any page with nodeId=1168. This is most likely caused by the page not being published.
+2013-02-25 11:25:02,352 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 29] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:25:02,352 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 29] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:27:28,758 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 80] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:27:55,278 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 70] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:28:18,553 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 85] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:28:18,553 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 85] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:28:34,528 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 83] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:28:34,528 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 83] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:28:55,026 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 79] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:28:55,026 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 79] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:29:11,796 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 78] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:29:11,796 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 78] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:29:36,086 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 83] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:29:36,086 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 83] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:30:17,270 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 78] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:30:17,270 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 78] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:31:05,021 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 82] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 11:31:05,021 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 82] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 12:39:28,219 [5] INFO  Umbraco.Core.PluginManager - [Thread 120] Completed resolution of types of Umbraco.Web.BaseRest.RestExtensionAttribute, found 1 (took 26ms)
+2013-02-25 12:43:41,735 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 59] Couldn't find any page with nodeId=1179. This is most likely caused by the page not being published.
+2013-02-25 12:43:41,750 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 59] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 12:43:41,750 [5] WARN  Umbraco.Web.Routing.NiceUrlProvider - [Thread 59] Couldn't find any page with nodeId=0. This is most likely caused by the page not being published.
+2013-02-25 16:42:24,026 [5] INFO  Umbraco.Web.UmbracoApplication - [Thread 114] Application shutdown. Reason: HostingEnvironment
+2013-02-25 19:46:44,118 [13] INFO  Umbraco.Core.CoreBootManager - [Thread 1] Umbraco application starting
+2013-02-25 19:46:44,212 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2013-02-25 19:46:44,274 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 57ms)
+2013-02-25 19:46:44,617 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 5 (took 316ms)
+2013-02-25 19:46:44,633 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IDataType, found 79 (took 10ms)
+2013-02-25 19:46:44,648 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IMacroGuiRendering, found 13 (took 5ms)
+2013-02-25 19:46:44,648 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IPackageAction, found 43 (took 4ms)
+2013-02-25 19:46:44,648 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IAction, found 38 (took 4ms)
+2013-02-25 19:46:44,664 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 4ms)
+2013-02-25 19:46:44,664 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 4ms)
+2013-02-25 19:46:44,992 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 5ms)
+2013-02-25 19:46:44,992 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 4ms)
+2013-02-25 19:46:45,007 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 17 (took 4ms)
+2013-02-25 19:46:45,054 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplication, found 7 (took 16ms)
+2013-02-25 19:46:45,101 [13] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.ITree, found 27 (took 8ms)
+2013-02-25 19:46:45,881 [13] INFO  Umbraco.Core.CoreBootManager - [Thread 1] Umbraco application startup complete (took 1748ms)
+2013-02-25 19:46:50,249 [13] INFO  Umbraco.Core.PluginManager - [Thread 8] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 6ms)
+2013-02-25 19:46:50,249 [13] INFO  Umbraco.Core.PluginManager - [Thread 8] Completed resolution of types of umbraco.interfaces.IAction, found 38 (took 0ms)
+2013-02-25 19:46:50,608 [13] INFO  Umbraco.Core.PluginManager - [Thread 8] Completed resolution of types of umbraco.interfaces.ITree, found 45 (took 6ms)
+2013-02-25 20:00:54,952 [79] INFO  Umbraco.Web.UmbracoApplication - [Thread 24] Application shutdown. Reason: HostingEnvironment

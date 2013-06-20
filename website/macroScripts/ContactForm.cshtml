@@ -1,0 +1,113 @@
+﻿@using umbraco.MacroEngines;
+@using Utilities;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@try
+{
+    string strAction = String.Empty;
+    string reqAction = HttpContext.Current.Request["action"];
+    switch (reqAction)
+    {
+        case "submit":
+        case "complete":
+            strAction = reqAction;
+            break;
+        default:
+            strAction = "init";
+            break;
+    }
+    
+    
+    switch(strAction)
+    {
+        case "init":
+            @renderInit();
+            break;
+            
+        case "submit":
+            @renderSubmit();
+            break;
+            
+        case "complete":
+            @renderComplete();
+            break;
+    }
+}
+catch (Exception e)
+{ 
+    @:<!--
+    @:@Html.Raw(e.Message + "\n" + e.StackTrace)
+    @:-->
+}
+
+
+@helper renderInit()
+{
+    string strTitle = Helper.GetName(Model);
+    string strBodyText = Model.HasValue("bodyText") ? Model.GetProperty("bodyText").Value : String.Empty;
+
+    if (!String.IsNullOrEmpty(strTitle))
+    {
+        @:<h3>@strTitle</h3>
+    }
+    if (!String.IsNullOrEmpty(strBodyText))
+    {
+        @:@Html.Raw(strBodyText)
+    }
+    
+    <form method="post" action="?" id="contact-form">
+        <input type="hidden" name="action" value="submit" />
+        <input type="hidden" name="v" value="dialog" />
+        <div class="field">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" maxlength="255" />
+        </div>
+        <div class="field">
+            <textarea name="message" id="message" placeholder="Skriv din besked her..."></textarea>
+        </div>
+        <div class="field">
+            <button>SEND</button>
+        </div>
+    </form>       
+    <script type="text/javascript">
+        // <![CDATA[
+        $(function () {
+            AARHUSUNG.initContact();
+        });
+        // ]]>
+    </script>     
+}
+
+
+@helper renderSubmit()
+{
+    
+    string reqEmail = HttpContext.Current.Request["email"];
+    string reqMessage = HttpContext.Current.Request["message"];
+
+    string strEmail = String.IsNullOrEmpty(reqEmail) ? String.Empty : reqEmail.Trim();
+    string strMessage = String.IsNullOrEmpty(reqMessage) ? String.Empty : reqMessage.Trim();
+
+    
+    if (ContactUtilities.SubmitContactForm(Model, strEmail, strMessage))
+    {
+        HttpContext.Current.Response.Redirect(HttpContext.Current.Request.Path + "?action=complete&v=dialog", true);            
+    }
+    else 
+    {
+        //Some invalid fields - redirect to initial state
+        HttpContext.Current.Response.Redirect(HttpContext.Current.Request.Path + "?v=dialog", true);
+    }
+}
+
+
+@helper renderComplete()
+{
+    string strTitle = Helper.GetName(Model);
+    string strBodyText = Model.HasValue("doneText") ? Model.GetProperty("doneText").Value : String.Empty;
+
+    if (!String.IsNullOrEmpty(strTitle))
+    {
+        @:<h3>@strTitle</h3>
+    }
+    @:@Html.Raw(ContactUtilities.GetDoneText(Model))
+}

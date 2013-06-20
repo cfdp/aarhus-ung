@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>create301URLTracker.ascx</guid>
+      <orgPath>/umbraco/create</orgPath>
+      <orgName>create301URLTracker.ascx</orgName>
+    </file>
+    <file>
+      <guid>edit301URLTracker.aspx</guid>
+      <orgPath>/umbraco/settings</orgPath>
+      <orgName>edit301URLTracker.aspx</orgName>
+    </file>
+    <file>
+      <guid>301URLTracker.png</guid>
+      <orgPath>/umbraco/images/umbraco</orgPath>
+      <orgName>301URLTracker.png</orgName>
+    </file>
+    <file>
+      <guid>InfoCaster.Umbraco._301UrlTracker.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>InfoCaster.Umbraco._301UrlTracker.dll</orgName>
+    </file>
+    <file>
+      <guid>PackageActionsContrib.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>PackageActionsContrib.dll</orgName>
+    </file>
+    <file>
+      <guid>edit301URLTrackerNode.ascx</guid>
+      <orgPath>/usercontrols</orgPath>
+      <orgName>edit301URLTrackerNode.ascx</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>301 URL Tracker</name>
+      <version>1.5.2</version>
+      <license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+      <url>http://our.umbraco.org/projects/developer-tools/301-url-tracker</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Stefan Kip - InfoCaster</name>
+      <website>http://www.infocaster.net</website>
+    </author>
+    <readme><![CDATA[The 301 URL Tracker package is created by InfoCaster. The original idea comes from Soeteman Software.
+
+From version 1.4 on, this package will only be tested on umbraco 4.7+ (remove the old version before installing this one --> BACKUP THE DATA INSIDE THE 'INFOCASTER301' TABLE IF YOU WANT TO KEEP THE CURRENT URL CHANGES!!!)
+	
+From version 1.2 on, this package will only support umbraco 4.5+ (remove the old version before installing this one --> BACKUP THE DATA INSIDE THE 'INFOCASTER301' TABLE IF YOU WANT TO KEEP THE CURRENT URL CHANGES!!!)
+
+The purpose of the 301 URL Tracker package, is to create some SEO friendlyness.
+Search engines crawl your website and store links to all pages within your website.
+The 301 URL Tracker keeps track of all the url changes of these pages:
+
+    * When a document is moved it gets a new url
+    * When a document is renamed it gets a new url
+	* When a document's property 'umbracoUrlName' is added/changed
+
+The old urls are stored and when someone requests one of these old urls, they are automatically transfered to the correct new url, with a 301 HTTP response.
+Search engines recognize this HTTP response and replace the old location with the new location.
+
+All features of the 301 URL Tracker package:
+
+    * Keeps track of url changes and redirects requests from these 'old' urls to the new ones
+    * Ability to create custom url mappings, e.g. when you get a new website, the urls can be changed. This way you can map old urls to new ones
+    * Remove any url mapping; automatically tracked urls and custom mapped urls
+
+Some hints
+
+    * When a document gets a new url, the old url is saved and the document is automatically added to the 301 URL Tracker tree (including all child documents)
+    * When one wants to create a custom url mapping, just right-click on the 301 URL Tracker node and click 'Create'. Select the document to create the custom url mapping for
+    * The reason for an automatic mapping is shows next to the mapping url. When creating custom mappings, you can add your own note to the mapping
+    * To delete all url mappings for a document, just right-click on the document in the 301 URL Tracker tree and press 'Delete'. Important note: the documents underneath the deleted one will NOT be removed, although it looks like they are
+    * The url mappings are ordered by date descending. To view the creation date of a mapping, hover with the mouse over the url of a mapping entry
+    * When a document with configured url mappings gets recycled, it won't show up in the 301 URL Tracker tree anymore (and the url mappings won't work)
+    * When a document gets moved back from the recycle bin, it shows up again in the 301 URL Tracker tree. When a document gets deleted for real, the url mappings get deleted too
+
+Changelog
+
+	* Version 1.5.2
+		  o [Bug fix] The 404handler didn't work sometimes
+		  o [New feature] Support for disabling domain matching by adding an application setting called '301:ignoreDomain' and set it to 'true'
+	* Version 1.5.1
+		  o [Bug fix] The URL matching has been improved for older versions of umbraco, like 4.7.X
+	* Version 1.5
+		  o [New feature] The 301 URL Tracker now responds with the 410 Gone HTTP status code for removed content
+	* Version 1.4
+		  o [Bug fix] Since Umbraco 4.7.2, the url passed to the 404handler didn't include the trailing slash. The 301 URL Tracker now checks for the url with and without trailing slash
+	* Version 1.3
+		  o [Bug fix] The 301 URL Tracker is now able to succesfully handle changed when 'useDomainPrefixes' is enabled
+		  o [New feature] Support for the 'umbracoUrlName' property
+		  o [New feature] Support for querystring in custom redirects
+    * Version 1.2
+		  o [Bug fix] Only one version supporting SQL2000, 2005, 2008 etc...
+          o [Bug fix] From now on only compatible with umbraco 4.5+
+          o [New feature] Support for multi-site installations
+    * Version 1.1
+          o [Bug fix (critical)] The 404 Handler returned '301 URL Tracker' as HTTP Status instead of '301 Moved Permanently'
+          o [New feature] View/manage Url Mappings on the node itself with the new 301 URL Tracker Datatype (ofcourse you must add a property, with the 301 URL Tracker Datatype, to a Document Type and !!!REMOVE IT WHEN YOU ARE GOING TO UN-INSTALL THE 301 URL TRACKER !!!)
+          o [New feature] Create RegEx Url Mappings (url mappings will be tried to match first, if no match found RegEx matching kicks in, ordered by Insertion date ascending)
+          o [New feature] Option to disable the 301 URL Tracker (add to appSettings: <add key="infocasterDisable301URLTracker" value="true" />
+          o [New feature] When clicking on the '301 URL Tracker' node in the tree, there's a button to view all not found requests]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes>
+    <DataType Name="301 URL Tracker" Id="676b15b8-93cf-48c4-87b7-889c329b3089" Definition="efa4288b-c16d-42ad-bb8b-0d5ffdccb615">
+      <PreValues />
+    </DataType>
+  </DataTypes>
+  <Actions>
+    <Action runat="install" undo="true" alias="addApplicationTree" silent="false" initialize="true" sortOrder="7" applicationAlias="settings" treeAlias="301URLTracker" treeTitle="301 URL Tracker" iconOpened=".sprTreeFolder_o" iconClosed=".sprTreeFolder" assemblyName="InfoCaster.Umbraco._301UrlTracker" treeHandlerType="Tree301URLTracker" action="" />
+    <Action runat="install" undo="true" alias="Add404Handler" assembly="InfoCaster.Umbraco._301UrlTracker" type="Handler301URLTracker" />
+    <Action runat="install" undo="true" alias="AddTreeNodeType">
+      <nodeType alias="init301URLTracker">
+        <header>301 URL Tracker</header>
+        <usercontrol>/create/create301URLTracker.ascx</usercontrol>
+        <tasks>
+          <create assembly="InfoCaster.Umbraco._301UrlTracker" type="Tasks301URLTracker" />
+        </tasks>
+      </nodeType>
+      <nodeType alias="301URLTracker">
+        <header>301 URL Tracker</header>
+        <usercontrol>/create/create301URLTracker.ascx</usercontrol>
+        <tasks>
+          <delete assembly="InfoCaster.Umbraco._301UrlTracker" type="Tasks301URLTracker" />
+        </tasks>
+      </nodeType>
+    </Action>
+    <Action runat="install" alias="ExecuteSql"><![CDATA[CREATE TABLE infocaster301(
+	NodeID int NOT NULL,
+	OldUrl nvarchar(400) NOT NULL,
+	IsCustom bit NOT NULL,
+	IsRegex bit NOT NULL,
+	Message nvarchar(400) NULL,
+	Inserted datetime NOT NULL,
+ CONSTRAINT PK_infocaster301 PRIMARY KEY CLUSTERED 
+(
+	NodeID ASC,
+	OldUrl ASC
+) ON [PRIMARY]
+) ON [PRIMARY]
+
+ALTER TABLE infocaster301 ADD  CONSTRAINT DF_infocaster301_Custom  DEFAULT ((0)) FOR IsCustom
+ALTER TABLE infocaster301 ADD  CONSTRAINT DF_infocaster301_Regex  DEFAULT ((0)) FOR IsRegex
+ALTER TABLE infocaster301 ADD  CONSTRAINT DF_infocaster301_Inserted  DEFAULT (getdate()) FOR Inserted]]></Action>
+    <Action runat="uninstall" alias="ExecuteSql"><![CDATA[DROP TABLE infocaster301]]></Action>
+  </Actions>
+</umbPackage>

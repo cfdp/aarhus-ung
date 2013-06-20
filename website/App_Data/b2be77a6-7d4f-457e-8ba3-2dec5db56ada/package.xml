@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>InsertMeta.cshtml</guid>
+      <orgPath>/macroScripts</orgPath>
+      <orgName>InsertMeta.cshtml</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>standarddoctypes</name>
+      <version>1</version>
+      <license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+      <url>www.inet-design.dk</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Morten Ebsen</name>
+      <website>www.inet-design.dk</website>
+    </author>
+    <readme><![CDATA[internal use only]]></readme>
+  </info>
+  <DocumentTypes>
+    <DocumentType>
+      <Info>
+        <Name>Master</Name>
+        <Alias>Master</Alias>
+        <Icon>folder.gif</Icon>
+        <Thumbnail>folder.png</Thumbnail>
+        <Description>
+        </Description>
+        <AllowedTemplates />
+        <DefaultTemplate>
+        </DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Title</Name>
+          <Alias>title</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>SEO</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Description</Name>
+          <Alias>metaDescription</Alias>
+          <Type>67db8357-ef57-493e-91ac-936d305e0f2a</Type>
+          <Definition>c6bac0dd-4ab9-45b1-8e30-e4b619ee5da3</Definition>
+          <Tab>SEO</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Keywords</Name>
+          <Alias>metaKeywords</Alias>
+          <Type>67db8357-ef57-493e-91ac-936d305e0f2a</Type>
+          <Definition>c6bac0dd-4ab9-45b1-8e30-e4b619ee5da3</Definition>
+          <Tab>SEO</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Redirect</Name>
+          <Alias>umbracoRedirect</Alias>
+          <Type>158aa029-24ed-4948-939e-c3da209e5fba</Type>
+          <Definition>a6857c73-d6e9-480c-b6e6-f15f6ad11125</Definition>
+          <Tab>Navigation</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Hide from Navigation</Name>
+          <Alias>umbracoNaviHide</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>Navigation</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Alternate Url</Name>
+          <Alias>umbracoUrlAlias</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Navigation</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Alternate Url Name</Name>
+          <Alias>umbracoUrlName</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Navigation</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>7</Id>
+          <Caption>Navigation</Caption>
+        </Tab>
+        <Tab>
+          <Id>6</Id>
+          <Caption>SEO</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Frontpage</Name>
+        <Alias>FrontPage</Alias>
+        <Icon>house.png</Icon>
+        <Thumbnail>folder.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>Master</Master>
+        <AllowedTemplates>
+          <Template>FrontPage</Template>
+        </AllowedTemplates>
+        <DefaultTemplate>FrontPage</DefaultTemplate>
+      </Info>
+      <Structure>
+        <DocumentType>StandardPage</DocumentType>
+        <DocumentType>NewsList</DocumentType>
+      </Structure>
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Title postfix</Name>
+          <Alias>titlePostfix</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Settings</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Footer Text</Name>
+          <Alias>footerText</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Settings</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Page not found</Name>
+          <Alias>umbracoPageNotFound</Alias>
+          <Type>676b15b8-93cf-48c4-87b7-889c329b3089</Type>
+          <Definition>efa4288b-c16d-42ad-bb8b-0d5ffdccb615</Definition>
+          <Tab>
+          </Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>9</Id>
+          <Caption>Settings</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Standard Page Properties</Name>
+        <Alias>StandardPageProperties</Alias>
+        <Icon>folder.gif</Icon>
+        <Thumbnail>folder.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>Master</Master>
+        <AllowedTemplates />
+        <DefaultTemplate>
+        </DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Header</Name>
+          <Alias>header</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Content</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Content</Name>
+          <Alias>bodyText</Alias>
+          <Type>5e9b75ae-face-41c8-b47e-5f4b0fd82f83</Type>
+          <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+          <Tab>Content</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>8</Id>
+          <Caption>Content</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>News Item</Name>
+        <Alias>NewsItem</Alias>
+        <Icon>calendar_view_day.png</Icon>
+        <Thumbnail>folder.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>StandardPageProperties</Master>
+        <AllowedTemplates>
+          <Template>NewsItem</Template>
+        </AllowedTemplates>
+        <DefaultTemplate>NewsItem</DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Date</Name>
+          <Alias>date</Alias>
+          <Type>23e93522-3200-44e2-9f29-e61a6fcbb79a</Type>
+          <Definition>5046194e-4237-453c-a547-15db3a07c4e1</Definition>
+          <Tab>Content</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Teaser</Name>
+          <Alias>teaser</Alias>
+          <Type>5e9b75ae-face-41c8-b47e-5f4b0fd82f83</Type>
+          <Definition>cb9784ea-5b46-4c4a-9501-e4194917fe1b</Definition>
+          <Tab>Content</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs />
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>News List</Name>
+        <Alias>NewsList</Alias>
+        <Icon>calendar.png</Icon>
+        <Thumbnail>folder.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>StandardPageProperties</Master>
+        <AllowedTemplates>
+          <Template>NewsList</Template>
+        </AllowedTemplates>
+        <DefaultTemplate>NewsList</DefaultTemplate>
+      </Info>
+      <Structure>
+        <DocumentType>NewsItem</DocumentType>
+      </Structure>
+      <GenericProperties />
+      <Tabs />
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Site</Name>
+        <Alias>Site</Alias>
+        <Icon>world.png</Icon>
+        <Thumbnail>folder.png</Thumbnail>
+        <Description>
+        </Description>
+        <AllowedTemplates />
+        <DefaultTemplate>
+        </DefaultTemplate>
+      </Info>
+      <Structure>
+        <DocumentType>FrontPage</DocumentType>
+      </Structure>
+      <GenericProperties />
+      <Tabs />
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Standard Page</Name>
+        <Alias>StandardPage</Alias>
+        <Icon>page.png</Icon>
+        <Thumbnail>folder.png</Thumbnail>
+        <Description>
+        </Description>
+        <Master>StandardPageProperties</Master>
+        <AllowedTemplates>
+          <Template>StandardPage</Template>
+        </AllowedTemplates>
+        <DefaultTemplate>StandardPage</DefaultTemplate>
+      </Info>
+      <Structure>
+        <DocumentType>StandardPage</DocumentType>
+      </Structure>
+      <GenericProperties />
+      <Tabs />
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>XSLTsearch</Name>
+        <Alias>XSLTsearch</Alias>
+        <Icon>.sprTreeDoc2</Icon>
+        <Thumbnail>doc.png</Thumbnail>
+        <Description>XSLTsearch page.
+(adjust settings via the macro in the XSLTsearch template)</Description>
+        <AllowedTemplates>
+          <Template>XSLTsearch</Template>
+        </AllowedTemplates>
+        <DefaultTemplate>XSLTsearch</DefaultTemplate>
+      </Info>
+      <Structure />
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Hide in navigation</Name>
+          <Alias>umbracoNaviHide</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>
+          </Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs />
+    </DocumentType>
+  </DocumentTypes>
+  <Templates>
+    <Template>
+      <Name>Front Page</Name>
+      <Alias>FrontPage</Alias>
+      <Master>Master</Master>
+      <Design><![CDATA[<%@ Master Language="C#" MasterPageFile="~/masterpages/Master.master" AutoEventWireup="true" %>
+
+<asp:Content ContentPlaceHolderID="Master" runat="server">
+ 
+</asp:Content>]]></Design>
+    </Template>
+    <Template>
+      <Name>Master</Name>
+      <Alias>Master</Alias>
+      <Design><![CDATA[<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.master" AutoEventWireup="true" %>
+
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+ 
+  
+  
+  
+  
+<asp:ContentPlaceHolder Id="Master" runat="server">
+  <!-- Insert default "Master" markup here -->
+</asp:ContentPlaceHolder>
+
+  
+  
+  
+</asp:Content>]]></Design>
+    </Template>
+    <Template>
+      <Name>News Item</Name>
+      <Alias>NewsItem</Alias>
+      <Master>Master</Master>
+      <Design><![CDATA[<%@ Master Language="C#" MasterPageFile="~/masterpages/Master.master" AutoEventWireup="true" %>
+
+<asp:Content ContentPlaceHolderID="Master" runat="server">
+ 
+</asp:Content>]]></Design>
+    </Template>
+    <Template>
+      <Name>News List</Name>
+      <Alias>NewsList</Alias>
+      <Master>Master</Master>
+      <Design><![CDATA[<%@ Master Language="C#" MasterPageFile="~/masterpages/Master.master" AutoEventWireup="true" %>
+
+<asp:Content ContentPlaceHolderID="Master" runat="server">
+ 
+</asp:Content>]]></Design>
+    </Template>
+    <Template>
+      <Name>Standard Page</Name>
+      <Alias>StandardPage</Alias>
+      <Master>Master</Master>
+      <Design><![CDATA[<%@ Master Language="C#" MasterPageFile="~/masterpages/Master.master" AutoEventWireup="true" %>
+
+<asp:Content ContentPlaceHolderID="Master" runat="server">
+ 
+</asp:Content>]]></Design>
+    </Template>
+    <Template>
+      <Name>XSLTsearch</Name>
+      <Alias>XSLTsearch</Alias>
+      <Design><![CDATA[<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.master" AutoEventWireup="true" %>
+
+  
+<asp:Content ContentPlaceHolderId="RunwayMasterContentPlaceHolder" runat="server">
+  <div id="content">
+    <div id="contentHeader">  
+        <h2><umbraco:Item runat="server" field="pageName"/></h2>
+    </div>
+
+    <umbraco:Macro runat="server" Alias="XSLTsearch"
+      macroAlias="XSLTsearch"
+      source="-1"
+      searchFields="@nodeName,metaKeywords,metaDescription,bodyText"
+      previewFields="bodyText,metaDescription"
+      previewType="beginning"
+      searchBoxLocation="bottom"
+      resultsPerPage="5"
+      previewChars="255"
+      showPageRange="0"
+      showOrdinals="0"
+      showScores="0"
+      showStats="1">
+    </umbraco:Macro>
+
+  </div>
+</asp:Content>]]></Design>
+    </Template>
+  </Templates>
+  <Stylesheets>
+    <Stylesheet>
+      <Name>Editor Style</Name>
+      <FileName>
+      </FileName>
+      <Content><![CDATA[
+
+]]></Content>
+      <Properties>
+        <Property>
+          <Name>H2</Name>
+          <Alias>H2</Alias>
+          <Value>
+          </Value>
+        </Property>
+        <Property>
+          <Name>H3</Name>
+          <Alias>H3</Alias>
+          <Value>
+          </Value>
+        </Property>
+        <Property>
+          <Name>H4</Name>
+          <Alias>H4</Alias>
+          <Value>
+          </Value>
+        </Property>
+        <Property>
+          <Name>H5</Name>
+          <Alias>H5</Alias>
+          <Value>
+          </Value>
+        </Property>
+        <Property>
+          <Name>H6</Name>
+          <Alias>H6</Alias>
+          <Value>
+          </Value>
+        </Property>
+      </Properties>
+    </Stylesheet>
+  </Stylesheets>
+  <Macros>
+    <macro>
+      <name>Insert Meta</name>
+      <alias>InsertMeta</alias>
+      <scriptType>
+      </scriptType>
+      <scriptAssembly>
+      </scriptAssembly>
+      <xslt>
+      </xslt>
+      <useInEditor>False</useInEditor>
+      <refreshRate>0</refreshRate>
+      <scriptingFile>InsertMeta.cshtml</scriptingFile>
+      <properties />
+    </macro>
+  </Macros>
+  <DictionaryItems>
+    <DictionaryItem Key="Umbraco">
+      <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[]]></Value>
+      <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[]]></Value>
+      <DictionaryItem Key="Content">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Content]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Indhold]]></Value>
+        <DictionaryItem Key="bodyText">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Content]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Indhold]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="Date">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Date]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Dato]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="Header">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Header]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Overskrift]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="Teaser">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Teaser]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Teaser]]></Value>
+        </DictionaryItem>
+      </DictionaryItem>
+      <DictionaryItem Key="DocTypes">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[]]></Value>
+        <DictionaryItem Key="Frontpage">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Frontpage]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Forside]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="NewsItem">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[News Item]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Nyhed]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="NewsList">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[News List]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Nyheder]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="StandardPage">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Standard Page]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Standard Side]]></Value>
+        </DictionaryItem>
+      </DictionaryItem>
+      <DictionaryItem Key="Navigation">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Navigation]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Navigation]]></Value>
+        <DictionaryItem Key="AlternateUrl">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Alternate Url]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Alternativ sti]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="AlternateUrlName">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Alternate Url Name]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Alternativ sti navn]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="HideNavigation">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Hide from Navigation]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Skjul for menu]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="Redirect">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Redirect]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Gå til]]></Value>
+        </DictionaryItem>
+      </DictionaryItem>
+      <DictionaryItem Key="SEO">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[SEO]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[SEO]]></Value>
+        <DictionaryItem Key="Description">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Description]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Beskrivelse]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="Keywords">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Keywords]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Nøgleord]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="Title">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Title]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Titel]]></Value>
+        </DictionaryItem>
+      </DictionaryItem>
+      <DictionaryItem Key="Settings">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Settings]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Indstillinger]]></Value>
+        <DictionaryItem Key="footerText">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Footer Text]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Footer tekst]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="titlePostfix">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Title postfix]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Titel postfix]]></Value>
+        </DictionaryItem>
+        <DictionaryItem Key="umbracoPageNotFound">
+          <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Page not found]]></Value>
+          <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Side ikke fundet]]></Value>
+        </DictionaryItem>
+      </DictionaryItem>
+    </DictionaryItem>
+    <DictionaryItem Key="XSLTsearch">
+      <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[]]></Value>
+      <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[]]></Value>
+      <DictionaryItem Key="[XSLTsearch]Button-Search">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Search]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Søg]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Description-Context">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Context]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Kontekst]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Description-ContextUnavailable">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[unavailable]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[ikke tilgængelig]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Heading-SearchResults">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Search Results]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Søge Resultater]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Navigation-Next">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Next]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Næste]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Navigation-Previous">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Previous]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Forrige]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]PageRange-ShowingResults">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Showing results]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Viser resultater]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]PageRange-To">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[to]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[til]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Score-Score">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[score]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[score]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Stats-PagesIn">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[pages in]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[sider på]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Stats-Searched">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Searched]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Søgt]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Stats-Seconds">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[seconds]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[sekunder]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Summary-Matches">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[matches]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[resultater]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Summary-NoMatchesWereFoundFor">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[No matches were found for]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Ingen resultater blev fundet på]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Summary-Page">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[page]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[side]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Summary-Pages">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[pages]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[sider]]></Value>
+      </DictionaryItem>
+      <DictionaryItem Key="[XSLTsearch]Summary-YourSearchFor">
+        <Value LanguageId="1" LanguageCultureAlias="en-GB"><![CDATA[Your search for]]></Value>
+        <Value LanguageId="3" LanguageCultureAlias="da-DK"><![CDATA[Din søgning på]]></Value>
+      </DictionaryItem>
+    </DictionaryItem>
+  </DictionaryItems>
+  <Languages />
+  <DataTypes />
+</umbPackage>

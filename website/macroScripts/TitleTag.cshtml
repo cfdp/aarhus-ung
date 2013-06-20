@@ -1,0 +1,33 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@try
+{
+    string strTitle = String.Empty;
+    string strPostfix = String.Empty;
+
+    DynamicNode nodeHome = Model.AncestorOrSelf("FrontPage");
+    if (nodeHome != null)
+    {
+        strPostfix = nodeHome.HasValue("titlePostfix") ? nodeHome.GetProperty("titlePostfix").Value : String.Empty;
+    }
+
+
+    if (Model.NodeTypeAlias == "FrontPage")
+    {
+        strTitle = !String.IsNullOrEmpty(strPostfix) ? strPostfix : Helper.GetName(Model);
+    }
+    else
+    {
+        strTitle = Helper.GetName(Model) + (!String.IsNullOrEmpty(strPostfix) ? " - " + strPostfix : String.Empty);
+    }
+    
+    <title>@strTitle</title>
+
+
+}
+catch (Exception e)
+{ 
+    <!--
+    @Html.Raw(e.Message + "\n" + e.StackTrace)
+    -->
+}

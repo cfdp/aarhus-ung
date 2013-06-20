@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>deleteLog.ascx</guid>
+      <orgPath>/umbraco/plugins/tswe/log</orgPath>
+      <orgName>deleteLog.ascx</orgName>
+    </file>
+    <file>
+      <guid>manager.aspx</guid>
+      <orgPath>/umbraco/plugins/tswe/log</orgPath>
+      <orgName>manager.aspx</orgName>
+    </file>
+    <file>
+      <guid>viewLog.ascx</guid>
+      <orgPath>/umbraco/plugins/tswe/log</orgPath>
+      <orgName>viewLog.ascx</orgName>
+    </file>
+    <file>
+      <guid>delete.png</guid>
+      <orgPath>/umbraco/plugins/tswe/log/images</orgPath>
+      <orgName>delete.png</orgName>
+    </file>
+    <file>
+      <guid>logmanager.png</guid>
+      <orgPath>/umbraco/plugins/tswe/log/images</orgPath>
+      <orgName>logmanager.png</orgName>
+    </file>
+    <file>
+      <guid>refresh.png</guid>
+      <orgPath>/umbraco/plugins/tswe/log/images</orgPath>
+      <orgName>refresh.png</orgName>
+    </file>
+    <file>
+      <guid>search.png</guid>
+      <orgPath>/umbraco/plugins/tswe/log/images</orgPath>
+      <orgName>search.png</orgName>
+    </file>
+    <file>
+      <guid>tswe.log.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>tswe.log.dll</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>tswe.log4umbraco</name>
+      <version>4.5.0</version>
+      <license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+      <url>http://log4umbraco.codeplex.com/</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Immo Wache</name>
+      <website>http://www.ucc-bln.de</website>
+    </author>
+    <readme><![CDATA[<p>Umbraco Log Mangager for Umbraco V 4.5 You can filter for view and deletetion of your umbraco log entries. Works with Datalayer - so you can use it as well with different database like MySQL or VistaDB.</p>
+<p>Log Manager now escapes output if there is HTML in any of the log entries to prevent potential vulnerability for cross-site scripting (XSS) attacks.</p>
+
+]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions>
+    <Action runat="install" alias="addApplicationTree" silent="false" initialize="true" sortOrder="99" applicationAlias="developer" treeAlias="logManager" treeTitle="Log Manager" iconOpened="folder.gif" iconClosed="folder.gif" assemblyName="tswe.log" treeHandlerType="loadLog" action="" />
+  </Actions>
+</umbPackage>

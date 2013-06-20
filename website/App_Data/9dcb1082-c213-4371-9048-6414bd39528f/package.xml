@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>ContextQuickLink.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>ContextQuickLink.dll</orgName>
+    </file>
+    <file>
+      <guid>PackageActionsContrib.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>PackageActionsContrib.dll</orgName>
+    </file>
+    <file>
+      <guid>unpublish.aspx</guid>
+      <orgPath>/umbraco/dialogs</orgPath>
+      <orgName>unpublish.aspx</orgName>
+    </file>
+    <file>
+      <guid>themissingmenus.js</guid>
+      <orgPath>/umbraco/plugins/themissingmenus</orgPath>
+      <orgName>themissingmenus.js</orgName>
+    </file>
+    <file>
+      <guid>unpublish.png</guid>
+      <orgPath>/umbraco/plugins/themissingmenus</orgPath>
+      <orgName>unpublish.png</orgName>
+    </file>
+    <file>
+      <guid>url.png</guid>
+      <orgPath>/umbraco/plugins/themissingmenus</orgPath>
+      <orgName>url.png</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>Productivity Menus</name>
+      <version>v1.0</version>
+      <license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+      <url>http://www.webdesigncompany.co.uk</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Lee Messenger</name>
+      <website>http://www.webdesigncompany.co.uk</website>
+    </author>
+    <readme><![CDATA[This package adds two useful context menus to aid productivity for the content editor in Umbraco:
+
+Unpublish
+
+Simply unpublishes the node with one click.
+
+Go To Url
+
+If a node is published, it allows you to right click and then opens a new window with the public url of the node (Calls NiceUrl)]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions>
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="en" position="end" area="actions" key="n3oUrl" value="Go To Url" />
+    <Action runat="install" undo="true" alias="AddLanguageFileKey" language="en" position="end" area="actions" key="n3oUnPublish" value="Un-Publish" />
+  </Actions>
+</umbPackage>

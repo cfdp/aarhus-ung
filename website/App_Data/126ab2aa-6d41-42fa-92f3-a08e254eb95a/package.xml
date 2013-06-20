@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>Diplo.LinkChecker.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>Diplo.LinkChecker.dll</orgName>
+    </file>
+    <file>
+      <guid>LinkChecker.ascx</guid>
+      <orgPath>/usercontrols/Diplo</orgPath>
+      <orgName>LinkChecker.ascx</orgName>
+    </file>
+    <file>
+      <guid>DiploLinkChecker.config</guid>
+      <orgPath>/config</orgPath>
+      <orgName>DiploLinkChecker.config</orgName>
+    </file>
+    <file>
+      <guid>Diplo.LinkChecker.Web.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>Diplo.LinkChecker.Web.dll</orgName>
+    </file>
+    <file>
+      <guid>Diplo.LinkChecker.Web.pdb</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>Diplo.LinkChecker.Web.pdb</orgName>
+    </file>
+    <file>
+      <guid>Diplo.LinkChecker.pdb</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>Diplo.LinkChecker.pdb</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>Diplo Link Checker</name>
+      <version>1.5</version>
+      <license url="http://www.diplo.co.uk/blog/2012/2/3/diplo-linkchecker-for-umbraco.aspx">Proprietary</license>
+      <url>http://www.diplo.co.uk/blog/2012/2/3/diplo-linkchecker-for-umbraco.aspx</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Dan Booth</name>
+      <website>http://www.diplo.co.uk/</website>
+    </author>
+    <readme><![CDATA[A simple HTTP-based Link Checker for Umbraco 4.8 and above (not 5).
+
+Adds a new tab to the Content section from where the Link Checker can be run.
+
+Configuration options are installed into /Config/DiploLinkChecker.config
+
+Version 1.5 updated to work with Umbraco 4.8 - use an earlier version for 4.7.2 and below.
+
+]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions>
+    <Action runat="install" alias="addDashboardSection" dashboardAlias="DiploLinkChecker">
+      <section>
+        <areas>
+          <area>content</area>
+        </areas>
+        <tab caption="Link Checker">
+          <control>/usercontrols/Diplo/LinkChecker.ascx</control>
+        </tab>
+      </section>
+    </Action>
+  </Actions>
+</umbPackage>

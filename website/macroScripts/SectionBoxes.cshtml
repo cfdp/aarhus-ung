@@ -1,0 +1,31 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    var myBoxNodes = Model.Children.Where("Visible AND (NodeTypeAlias == \"Section\" OR NodeTypeAlias == \"SectionDetails\")");
+    if (myBoxNodes.Count() > 0)
+    {
+        bool bSectionClass = Model.NodeTypeAlias == "FrontPage";
+
+        foreach (var myBoxNode in myBoxNodes)
+        {
+            string strUrl = Helper.GetUrl(myBoxNode);
+            string strTitle = Helper.GetName(myBoxNode);
+            string strTeaser = myBoxNode.HasValue("sectionText") ? myBoxNode.GetProperty("sectionText").Value : String.Empty;
+            string strAppTitle = myBoxNode.HasValue("appSectionText") ? myBoxNode.GetProperty("appSectionText").Value : String.Empty;
+
+            //Only retrieve section theme color if not on frontpage:
+            string strBgColor = !bSectionClass ? Helper.GetSectionColor(myBoxNode) : String.Empty;
+
+            //Retrieve div bg color if on front page:
+            string strDivBgColor = bSectionClass ? Helper.GetSectionColor(myBoxNode) : String.Empty;
+            
+    <div class="grid_1 link_box"@Html.Raw(!String.IsNullOrEmpty(strDivBgColor) ? " style=\"background-color: #" + strDivBgColor + "\";" : "")>
+        <a href="@strUrl" title="@strAppTitle"@Html.Raw(!String.IsNullOrEmpty(strBgColor) ? " style=\"background-color: #" + strBgColor + "\";" : "")>
+            <span class="title">@strTitle</span>
+            <span class="teaser">@strTeaser</span>
+            <span class="plus"></span>
+        </a>
+    </div>
+        }
+    }
+}

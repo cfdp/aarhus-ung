@@ -1,0 +1,76 @@
+﻿@using umbraco.MacroEngines;
+@using umbraco.cms.businesslogic.member;
+@using System.Collections.Specialized;
+@using Utilities;
+@functions{
+    
+    /// <summary>
+    /// Validates supplied contact form data (given node containing receipient and subject properties).
+    /// </summary>
+    /// <param name="n"></param>
+    /// <param name="strEmail"></param>
+    /// <param name="strMessage"></param>
+    /// <returns></returns>
+    public static bool SubmitContactForm(DynamicNode n, string strEmail, string strMessage)
+    {
+        bool bSuccess = false;
+
+        if (n != null)
+        {
+            strEmail = String.IsNullOrEmpty(strEmail) ? String.Empty : strEmail.Trim();
+            strMessage = String.IsNullOrEmpty(strMessage) ? String.Empty : strMessage.Trim();
+
+            string strRecipientEmail = n.HasValue("recipientEmail") ? n.GetProperty("recipientEmail").Value : String.Empty;
+            string strSubject = n.HasValue("emailSubject") ? n.GetProperty("emailSubject").Value : String.Empty;
+
+            if (MailUtilities.IsEmailAddress(strEmail) && MailUtilities.IsEmailAddress(strRecipientEmail) && !String.IsNullOrEmpty(strSubject) && !String.IsNullOrEmpty(strMessage))
+            {
+                SendConcactMail(strRecipientEmail, strEmail, strSubject, strMessage);
+                bSuccess = true;
+            }
+        }
+
+        return bSuccess;
+    }
+
+
+    /// <summary>
+    /// Builds contact mail content and sends it
+    /// </summary>
+    public static void SendConcactMail(string strRecipientEmail, string strEmail, string strSubject, string strMessage)
+    {
+        //Check if email address are valid and message is non-empty:    
+        if (MailUtilities.IsEmailAddress(strRecipientEmail) && MailUtilities.IsEmailAddress(strEmail) && !String.IsNullOrEmpty(strMessage))
+        {
+            //Build email:
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            sb.Append("<p><strong>Email</strong></p>");
+            sb.Append("<p>" + HttpUtility.HtmlAttributeEncode(strEmail) + "</p>");
+            sb.Append("<p><strong>Besked</strong></p>");
+            sb.Append("<p>" + strMessage.Replace(System.Environment.NewLine, "<br />") + "</p>");
+
+
+            string strMailBody = sb.ToString();
+
+            MailUtilities.SendEmail(strRecipientEmail, strEmail, null, null, strSubject, strMailBody);
+        }
+    }
+    
+    /// <summary>
+    /// Returns the text/HTML upon successful submission of contact form:
+    /// </summary>
+    /// <returns></returns>
+    public static string GetDoneText(DynamicNode n)
+    {
+        string s = String.Empty;
+        
+        if (n != null) 
+        {
+            s = n.HasValue("doneText") ? n.GetProperty("doneText").Value : String.Empty;
+        }
+        
+        return s;
+    }
+
+}

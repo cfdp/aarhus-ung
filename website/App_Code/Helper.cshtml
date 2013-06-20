@@ -1,0 +1,148 @@
+﻿@using umbraco.MacroEngines;
+@using umbraco.cms.businesslogic.member;
+@using System.Collections.Specialized;
+
+@functions{
+
+    public static bool NodeIsAncestor(dynamic model, dynamic item)
+    {
+        return (Array.IndexOf(model.Path.Split(','), item.Id.ToString()) >= 0);
+    }
+
+    public static dynamic GetAncestorSlideshow(dynamic item)
+    {
+        dynamic res = null;
+
+
+        DynamicNodeList acs = (DynamicNodeList)item.Ancestors("Section");
+        for (int i = acs.Count() - 1; i >= 0; i--)
+        {
+            dynamic a = acs.Items[i];
+            dynamic c = a.Slideshow.Where("Visible").First();
+
+            if (c != null && c.Id > 0)
+            {
+                res = c;
+                break;
+            }
+        }
+
+        return res;
+    }
+
+
+    public static string GetSectionClass(dynamic item)
+    {
+        string strColor = String.Empty;
+        string strClass = String.Empty;
+
+
+        strColor = item._sectionColor; //Fetch section color recursively
+        if (!String.IsNullOrEmpty(strColor))
+        {
+            strClass = GetSectionClass(strColor);
+        }
+
+        return strClass;
+    }
+
+    public static string GetSectionColor(dynamic item)
+    {
+        string strColor = item._sectionTheme; //Fetch section color recursively
+        if (String.IsNullOrEmpty(strColor))
+        {
+            strColor = "cccccc"; //Fallback if no color defined
+        }
+
+        return strColor;
+    }
+
+    public static string GetSectionClass(string strColor)
+    {
+        string strClass = String.Empty;
+
+        switch (strColor)
+        {
+            //Blue
+            case "1a3d68":
+                strClass = "section1";
+                break;
+
+            //Yellow-ish              
+            case "ffaf00":
+                strClass = "section2";
+                break;
+
+            //Green                
+            case "5f9529":
+                strClass = "section3";
+                break;
+
+            //Red                
+            case "c8252c":
+                strClass = "section4";
+                break;
+
+            //Purple              
+            case "615ad2":
+                strClass = "section5";
+                break;
+
+            //Orange
+            case "ff6c00":
+                strClass = "section6";
+                break;
+        }
+
+        return strClass;
+    }
+
+    public static string GetName(dynamic item, bool navigation = false)
+    {
+        string name = String.Empty;
+        if (item.HasValue("title") && navigation)
+        {
+            name = item.title;
+        }
+        else if (item.HasValue("header"))
+        {
+            name = item.header;
+        }
+        else if (item.HasValue("umbracoUrlName") && navigation)
+        {
+            name = item.umbracoUrlName;
+        }
+        else
+        {
+            name = item.Name;
+        }
+
+        return name;
+    }
+
+    public static string GetUrl(dynamic item)
+    {
+        string strUrl = item.NiceUrl;
+
+        if (item.HasValue("umbracoRedirect"))
+        {
+            dynamic nRedir = item.NodeById(item.umbracoRedirect);
+
+            if (nRedir != null && nRedir.Id != 0)
+            {
+                strUrl = nRedir.NiceUrl;
+            }
+        }
+        else if (item.HasValue("umbracoUrlAlias"))
+        {
+            strUrl = item.umbracoUrlAlias;
+        }
+
+        return strUrl;
+    }
+
+    public static string GetServerUrl()
+    {
+        return "http" + (HttpContext.Current.Request.IsSecureConnection ? "s" : String.Empty) + "://" + HttpContext.Current.Request.Url.Host;
+    }
+}

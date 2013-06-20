@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+	<info>
+		<package>
+			<name>Page State Icons</name>
+			<version>1.0.0</version>
+			<license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+			<url>http://our.umbraco.org/projects/backoffice-extensions/page-state-icons</url>
+			<requirements>
+				<major>4</major>
+				<minor>7</minor>
+				<patch>0</patch>
+			</requirements>
+		</package>
+		<author>
+			<name>umBristol community</name>
+			<website>http://umbristol.co.uk/</website>
+		</author>
+		<readme>
+			<![CDATA[Pimp up your back office with this addition of some state icons for your content nodes! This package shows you the states of your pages overlayed onto the content icon so you don't need to drill down into the properties to see what is going on.
+
+Included as standard are rules for:
+
+Page hidden from menu (umbracoNaviHide)
+Redirect to another page (umbracoRedirect)
+Transfer to another page (umbracoInternalRedirectId)
+
+The package allows site admins to add new icons and configure rules (including XPath expressions) to determine when and where the icons should appear.
+
+ 
+
+This package was created at the inaugural umBristol hack-day! (gert lush)]]></readme>
+	</info>
+	<DocumentTypes />
+	<Templates />
+	<Stylesheets />
+	<Macros />
+	<DictionaryItems />
+	<Languages />
+	<DataTypes />
+	<Actions>
+		<Action runat="install" undo="true" alias="PageStateIcons_AddConfigSection" />
+	</Actions>
+	<control />
+	<files><file><guid>a8728c2f-58e5-423a-8db8-7bd14a5b92d3.dll</guid><orgPath>/bin</orgPath><orgName>UmBristol.PageStateIcons.dll</orgName></file><file><guid>65813682-3d6e-489e-beac-1e6eb95dfbbc.config</guid><orgPath>/config</orgPath><orgName>PageStateIcons.config</orgName></file><file><guid>ed135271-8951-4d37-9651-2142df122870.ashx</guid><orgPath>/umbraco/plugins/PageStateIcons</orgPath><orgName>CssResourceHandler.ashx</orgName></file><file><guid>5d803864-0a59-4d02-8963-5d9c81f10d1b.png</guid><orgPath>/umbraco/plugins/PageStateIcons</orgPath><orgName>umbracoInternalRedirectId.png</orgName></file><file><guid>404235f4-d82f-4f61-9a66-d38af1132694.png</guid><orgPath>/umbraco/plugins/PageStateIcons</orgPath><orgName>umbracoNaviHide.png</orgName></file><file><guid>ce00cde5-cfab-4b08-811f-ffccc1a2de6b.png</guid><orgPath>/umbraco/plugins/PageStateIcons</orgPath><orgName>umbracoRedirect.png</orgName></file></files>
+</umbPackage>

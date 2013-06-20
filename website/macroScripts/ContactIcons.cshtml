@@ -1,0 +1,34 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    string strWebsite = Model.HasValue("website") ? Model.GetProperty("website").Value : String.Empty;
+    string strPhone = Model.HasValue("phone") ? Model.GetProperty("phone").Value : String.Empty;
+    string strEmail = Model.HasValue("email") ? Model.GetProperty("email").Value : String.Empty;
+    string strGoogleMaps = Model.HasValue("googleMaps") ? Model.GetProperty("googleMaps").Value : String.Empty;
+    string strBgColor = Helper.GetSectionColor(Model);
+
+    if (!String.IsNullOrEmpty(strWebsite) || !String.IsNullOrEmpty(strPhone) || !String.IsNullOrEmpty(strEmail) || !String.IsNullOrEmpty(strGoogleMaps))
+    {
+    <div class="contact_wrapper">
+        <ul>
+            @if (!String.IsNullOrEmpty(strWebsite))
+            {
+                <li class="www"><a href="@strWebsite" onclick="window.open(this.href); return false;"@Html.Raw(!String.IsNullOrEmpty(strBgColor) ? " style=\"background-color: #" + strBgColor + "\";" : "")>@strWebsite</a></li>
+            }
+            @if (!String.IsNullOrEmpty(strPhone))
+            {
+                <li class="phone"><a href="tel:@(@strPhone)"@Html.Raw(!String.IsNullOrEmpty(strBgColor) ? " style=\"background-color: #" + strBgColor + "\";" : "")>@strPhone</a></li>
+            }
+            @if (!String.IsNullOrEmpty(strEmail))
+            {
+                <li class="email"><a href="mailto:@(@strEmail)"@Html.Raw(!String.IsNullOrEmpty(strBgColor) ? " style=\"background-color: #" + strBgColor + "\";" : "")>@strEmail</a></li>
+            }
+            @if (!String.IsNullOrEmpty(strGoogleMaps))
+            {
+                <li class="map"><a href="@strGoogleMaps" onclick="window.open(this.href); return false;"@Html.Raw(!String.IsNullOrEmpty(strBgColor) ? " style=\"background-color: #" + strBgColor + "\";" : "")>@strGoogleMaps</a></li>
+            }
+
+        </ul>
+    </div>
+    }
+}

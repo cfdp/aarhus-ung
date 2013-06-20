@@ -1,0 +1,46 @@
+﻿@using umbraco.MacroEngines;
+@using DigibizAdvancedMediaPicker;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@try
+{
+    var personNodes = Model.Person.Where("Visible");
+    int c = personNodes.Count();    
+    
+    if (c > 0)
+    {
+        @:<ul class="people">
+        foreach(var item in personNodes)
+        {
+            string strImg = String.Empty;
+            string strText = item.HasValue("bodyText") ? item.GetProperty("bodyText").Value : String.Empty;
+            
+            if (item.HasValue("image")) 
+            {
+                var nImg = item.image;
+                if (nImg != null) 
+                {
+                    string strSrc = DAMP_Helper.GetImageCropperUrl(nImg, "AboutImage");
+                    if (!String.IsNullOrEmpty(strSrc))
+                    {
+                        strImg = "<img src=\"" + HttpUtility.HtmlAttributeEncode(strSrc) + "\" alt=\"" + HttpUtility.HtmlAttributeEncode(Helper.GetName(item)) + "\" />";
+                    }
+                }
+            }
+            
+            @:<li>
+            @:@Html.Raw(strImg)
+            @:@Html.Raw(strText)
+            @:</li>        
+        }
+        @:</ul>
+    }
+    
+    
+    
+}
+catch (Exception e)
+{ 
+    @:<!--
+    @:@Html.Raw(e.Message + "\n" + e.StackTrace)
+    @:-->
+}

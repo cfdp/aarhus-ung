@@ -1,0 +1,54 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@try
+{
+    var parent = Model.AncestorsOrSelf("Section").First();
+    <div class="grid_1 sidebar">
+        @if (parent != null)
+        {
+            string strSectionColor = Helper.GetSectionColor(Model);
+            string strData = !String.IsNullOrEmpty(strSectionColor) ? " data-c=\"" + strSectionColor + "\"" : String.Empty;
+            
+            var myNodes = parent.Children.Where("Visible AND NodeTypeAlias != \"Slideshow\"");
+            if (myNodes.Count() > 0)
+            {
+            <ul @Html.Raw(strData)>
+                @foreach (var myNode in myNodes)
+                {
+                    @renderSidebarItems(myNode);
+                }
+            </ul>
+            }
+        }
+
+
+    </div>
+}
+catch (Exception e)
+{ 
+    <!--
+    @Html.Raw(e.Message + "\n" + e.StackTrace)
+    -->
+}
+@helper renderSidebarItems(dynamic n)
+{
+    bool bIsAncestor = Helper.NodeIsAncestor(Model, n);
+    var strClass = bIsAncestor ? " class=\"current\"" : String.Empty;
+    string strAppTitle = n.HasValue("appSectionText") ? n.GetProperty("appSectionText").Value : String.Empty;
+    
+    <li@(@Html.Raw(strClass))><a href="@Helper.GetUrl(n)" title="@strAppTitle">@Helper.GetName(n, true)</a>@{
+        if (bIsAncestor)
+        {
+            var myNodes = n.Children.Where("Visible AND NodeTypeAlias != \"Slideshow\"");
+            if (myNodes.Count() > 0)
+            {
+        <ul>
+            @foreach (var myNode in myNodes)
+            {
+                @renderSidebarItems(myNode);
+            }
+        </ul>
+            }
+        }    
+    }</li>
+}

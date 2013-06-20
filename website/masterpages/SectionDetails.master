@@ -1,0 +1,14 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/StandardPage.master" AutoEventWireup="true" %>
+
+<asp:Content ContentPlaceHolderID="StandardPage" runat="server">
+    <umbraco:Macro Alias="Slider" runat="server" />
+
+    <div class="grid_2 content_box">
+        <umbraco:Macro Alias="BodyText" runat="server" />
+        <umbraco:Macro Alias="ContactIcons" runat="server" />
+    </div>
+
+
+
+    <%-- umbraco:Macro Alias="SectionBoxes" runat="server" / --%>
+</asp:Content>

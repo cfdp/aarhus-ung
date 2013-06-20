@@ -1,0 +1,508 @@
+﻿@using umbraco.MacroEngines;
+@using umbraco.cms.businesslogic.member;
+
+@using System.Collections.Specialized;
+@using System.Text.RegularExpressions;
+@using DigibizAdvancedMediaPicker;
+
+@functions{
+ 
+    public static string GetAppData(dynamic n)
+    {
+        //NB: data must be proper JSON.        
+
+        string s = String.Empty;
+
+        s += "{";
+
+        s += "\"id\": " + n.Id;
+        s += ", \"ntype\": " + Json.Encode(n.NodeTypeAlias.ToLower());
+        s += ", \"c\": " + Json.Encode(Helper.GetSectionClass(n));
+        s += ", \"theme\": " + Json.Encode(Helper.GetSectionColor(n));
+        s += ", \"title\": " + Json.Encode(n.NodeTypeAlias == "About" ? "Om denne app" : Helper.GetName(n));
+        s += ", \"caption\": " + Json.Encode(GetAppDataCaption(n));
+        s += ", \"description\": " + Json.Encode(GetAppDataDescription(n));
+
+
+        s += ", \"url\": " + Json.Encode(Helper.GetServerUrl() + Helper.GetUrl(n));
+
+        s += ", \"misc\": " + GetAppDataDetails(n);
+
+        s += "}";
+
+        return s;
+    }
+
+    /// <summary>
+    /// Returns the caption to be used for Facebook like/feed action.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataCaption(dynamic n)
+    {
+        return n.HasValue("appSectionText") ? n.GetProperty("appSectionText").Value : String.Empty;
+    }
+
+
+    /// <summary>
+    /// Returns the description to be used for Facebook like/feed action.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataDescription(dynamic n)
+    {
+        string s = String.Empty;
+
+        s = n.HasValue("bodyText") ? n.GetProperty("bodyText").Value : String.Empty;
+        if (!String.IsNullOrEmpty(s))
+        {
+            s = umbraco.library.TruncateString(umbraco.library.StripHtml(s), 300, "...");
+        }
+
+
+        return s;
+    }
+
+
+    /// <summary>
+    /// Returns more specific details for the given node depending on it's NodeTypeAlias.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataDetails(DynamicNode n)
+    {
+        string s = String.Empty;
+        int i = 0;
+
+        s += "{";
+
+        switch (n.NodeTypeAlias)
+        {
+            case "FrontPage":
+                s += GetAppDataSections(n);
+                s += ", " + GetAppDataTopIcons(n);
+                s += ", " + GetAppDataFooter(n);
+                break;
+
+            case "Section":
+                s += GetAppDataSections(n);
+                s += ", " + GetAppDataText(n);
+                s += ", " + GetAppDataSlideImages(n);
+                break;
+
+            case "SectionDetails":
+                s += GetAppDataSections(n);
+                s += ", " + GetAppDataText(n);
+                s += ", " + GetAppDataSectionDetailsContact(n);
+                s += ", " + GetAppDataSlideImages(n);
+                s += ", " + GetAppDataSectionDetailsLogo(n);
+                break;
+
+            case "About":
+                s += GetAppDataText(n);
+                s += ", " + GetAppAboutVideo(n);
+                s += ", " + GetAppDataPeople(n);
+                break;
+
+            case "Contact":
+                s += GetAppDataText(n);
+                //FIXME: add form specific details
+                break;
+
+            default:
+                break;
+        }
+
+        s += "}";
+
+        return s;
+    }
+
+    /// <summary>
+    /// Returns simple data for all the Secion and SectionDetails children of the supplied node.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataSections(dynamic n)
+    {
+        string s = String.Empty;
+        int i = 0;
+
+        var mySections = n.Children.Where("Visible AND (NodeTypeAlias == \"Section\" OR NodeTypeAlias == \"SectionDetails\")");
+
+        s += "\"sections\": [";
+
+        foreach (var m in mySections)
+        {
+            s += (i > 0 ? ", " : String.Empty) + "{";
+
+            s += "\"id\": " + (m.HasValue("umbracoRedirect") ? m.GetPropertyValue("umbracoRedirect") : m.Id);
+            s += ", \"ntype\": " + Json.Encode(m.NodeTypeAlias.ToLower());
+            s += ", \"title\": " + Json.Encode(Helper.GetName(m));
+            s += ", \"sub\": " + Json.Encode(m.HasValue("appSectionText") ? m.GetProperty("appSectionText").Value : String.Empty);
+            s += ", \"c\": " + Json.Encode(Helper.GetSectionClass(m));
+            s += ", \"theme\": " + Json.Encode(Helper.GetSectionColor(m));
+
+            s += "}";
+
+            i++;
+        }
+
+        s += "]";
+
+        return s;
+    }
+
+    /// <summary>
+    /// Parses text and replaces umbraco locallinks with app-friendly hash-based links.
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
+    public static string ParseTextLinks(dynamic n, string s)
+    {
+        if (!String.IsNullOrEmpty(s))
+        {
+            //Replace non-parsed localLinks with app-friendly hash-based links:
+            Regex rx = new Regex("\\/\\{localLink\\:(\\d+)\\}");
+            MatchCollection matches = rx.Matches(s);
+            foreach (Match m in matches)
+            {
+                string strId = rx.Replace(m.Value, "$1");
+                string strDocType = String.Empty;
+
+                var linkNode = n.NodeById(strId);
+
+                if (linkNode != null && linkNode.Id > 0)
+                {
+                    //DocType needed for app to determine proper view:
+                    strDocType = linkNode.NodeTypeAlias.ToLower();
+                    s = s.Replace(m.Value, rx.Replace(m.Value, "#" + strDocType + "?id=$1"));
+                }
+                else
+                {
+                    s = s.Replace(m.Value, "#");
+                }
+            }
+            
+            //Replace links and references to media items (prepend with server url)
+            s = s.Replace("href=\"/media/", "href=\"" + Helper.GetServerUrl() + "/media/");
+            s = s.Replace("src=\"/media/", "src=\"" + Helper.GetServerUrl() + "/media/");
+            
+            
+            
+        }
+        return s;
+    }
+
+    /// <summary>
+    /// Returns the parse body text with localLinks replaced by app friendly hash-based urls.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataText(dynamic n)
+    {
+        string s = String.Empty;
+
+        string strText = n.HasValue("bodyText") ? n.GetProperty("bodyText").Value : String.Empty;
+        strText = ParseTextLinks(n, strText);
+
+        s += "\"text\": " + Json.Encode(strText);
+
+        return s;
+    }
+
+    /// <summary>
+    /// Returns the contact links associated with a SectionDetails node.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataSectionDetailsContact(dynamic n)
+    {
+        string s = String.Empty;
+
+        s += "\"contact\": [";
+
+        string strWebsite = n.HasValue("website") ? n.GetProperty("website").Value : String.Empty;
+        string strPhone = n.HasValue("phone") ? n.GetProperty("phone").Value : String.Empty;
+        string strEmail = n.HasValue("email") ? n.GetProperty("email").Value : String.Empty;
+        string strGoogleMaps = n.HasValue("googleMaps") ? n.GetProperty("googleMaps").Value : String.Empty;
+
+
+        string str = String.Empty;
+        if (!String.IsNullOrEmpty(strWebsite))
+        {
+            str += (!String.IsNullOrEmpty(str) ? ", " : String.Empty) + "{ \"k\": \"www\", \"v\": " + Json.Encode(strWebsite) + "}";
+        }
+        if (!String.IsNullOrEmpty(strPhone))
+        {
+            str += (!String.IsNullOrEmpty(str) ? ", " : String.Empty) + "{ \"k\": \"phone\", \"v\": " + Json.Encode(strPhone) + "}";
+        }
+        if (!String.IsNullOrEmpty(strEmail))
+        {
+            str += (!String.IsNullOrEmpty(str) ? ", " : String.Empty) + "{ \"k\": \"email\", \"v\": " + Json.Encode(strEmail) + "}";
+        }
+        if (!String.IsNullOrEmpty(strGoogleMaps))
+        {
+            str += (!String.IsNullOrEmpty(str) ? ", " : String.Empty) + "{ \"k\": \"map\", \"v\": " + Json.Encode(strGoogleMaps) + "}";
+        }
+
+        s += str;
+
+        s += "]";
+
+        return s;
+    }
+
+    /// <summary>
+    /// Returns the logo image for a given SectionDetails node.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataSectionDetailsLogo(dynamic n)
+    {
+        string s = String.Empty;
+        string strHref = String.Empty;
+        if (n.HasValue("logo"))
+        {
+            var nLogo = n.logo;
+            strHref = Helper.GetServerUrl() + DAMP_Helper.GetImageCropperUrl(nLogo, "SectionIcon");
+        }
+
+        s += "\"logo\": " + Json.Encode(strHref);
+
+        return s;
+    }
+
+
+    /// <summary>
+    /// Returns the slide images for a Section og SectionDetails node (recursive behavior)
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataSlideImages(DynamicNode n)
+    {
+        string s = String.Empty;
+        string strServer = Helper.GetServerUrl();
+
+        dynamic slideNode = null;
+        bool bSingleItem = false; //Just retrieve a single item:
+
+        if (((dynamic)n).NodeTypeAlias == "SectionDetails")
+        {
+            bSingleItem = true;
+            slideNode = ((dynamic)n).Slideshow.Where("Visible").First();
+            if (slideNode == null || slideNode.Id == 0)
+            {
+                slideNode = Helper.GetAncestorSlideshow((dynamic)n);
+            }
+        }
+        else
+        {
+            slideNode = ((dynamic)n).Slideshow.Where("Visible").First();
+            if (slideNode == null || slideNode.Id == 0)
+            {
+                slideNode = Helper.GetAncestorSlideshow((dynamic)n);
+            }
+        }
+
+
+        s += "\"images\": [";
+
+        if (slideNode != null && slideNode.Id > 0)
+        {
+            var slideItems = slideNode.Children.Where("Visible AND NodeTypeAlias == \"SlideshowItem\"");
+            if (bSingleItem)
+            {
+                slideItems = slideItems.Take(1);
+            }
+            int i = 0;
+            foreach (var item in slideItems)
+            {
+                if (item.HasValue("image"))
+                {
+                    var nImg = item.image;
+                    if (nImg != null)
+                    {
+                        string strSrc = strServer + DAMP_Helper.GetImageCropperUrl(nImg, "SectionSlide");
+
+                        string strLink = item.HasValue("videoURL") ? item.GetProperty("videoURL").Value : String.Empty;
+
+                        s += (i > 0 ? ", " : String.Empty) + "{";
+                        s += "\"src\": " + Json.Encode(strSrc);
+                        s += ", \"href\": " + Json.Encode(strLink);
+                        s += "}";
+
+                        i++;
+                    }
+                }
+            }
+        }
+
+        s += "]";
+
+        return s;
+    }
+
+    /// <summary>
+    /// Returns the about video url
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppAboutVideo(dynamic n) 
+    {
+        string s = String.Empty;
+
+        s += "\"video\": " + Json.Encode(n.HasValue("videoURL") ? n.GetProperty("videoURL").Value : String.Empty);
+        
+        return s;
+    }
+    
+    
+    /// <summary>
+    /// Return people information for the about page.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataPeople(dynamic n)
+    {
+        string s = String.Empty;
+        string strServer = Helper.GetServerUrl();
+
+        s += "\"people\": [";
+
+        var personNodes = n.Person.Where("Visible");
+        int i = 0;
+        foreach (var item in personNodes)
+        {
+            string strImg = String.Empty;
+            string strText = item.HasValue("bodyText") ? item.GetProperty("bodyText").Value : String.Empty;
+
+            if (item.HasValue("image"))
+            {
+                var nImg = item.image;
+                if (nImg != null)
+                {
+                    string strSrc = DAMP_Helper.GetImageCropperUrl(nImg, "AboutImage");
+                    if (!String.IsNullOrEmpty(strSrc))
+                    {
+                        strImg = strServer + strSrc;
+                    }
+                }
+            }
+
+            s += (i > 0 ? ", " : String.Empty) + "{";
+            s += "\"img\": " + Json.Encode(strImg);
+            s += ", \"text\": " + Json.Encode(strText);
+            s += "}";
+
+            i++;
+        }
+
+        s += "]";
+
+        return s;
+    }
+
+
+    /// <summary>
+    /// Returns the top icons to display on the front page
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataTopIcons(dynamic n)
+    {
+        string s = String.Empty;
+
+        s += "\"icons\": [";
+
+        var topIcons = n.AppTopIcon;
+        if (topIcons.Count() > 0)
+        {
+            int i = 0;
+            foreach (var icon in topIcons)
+            {
+                if (icon.Id > 0)
+                {
+
+                    string strImg = String.Empty;
+                    string strUrl = icon.HasValue("iconUrl") ? icon.GetProperty("iconUrl").Value : String.Empty;
+
+
+                    if (icon.HasValue("image"))
+                    {
+                        dynamic iconImage = icon.GetProperty("image").Value;
+                        strImg = Helper.GetServerUrl() + DAMP_Helper.GetImageUrl(iconImage);
+                    }
+
+
+                    s += (i > 0 ? ", " : String.Empty) + "{";
+
+                    s += "\"id\": " + Json.Encode(icon.Id);
+                    s += ", \"title\": " + Json.Encode(Helper.GetName(icon));
+                    s += ", \"src\": " + Json.Encode(strImg);
+                    s += ", \"url\": " + Json.Encode(strUrl);
+
+                    s += "}";
+
+                    i++;
+                }
+            }
+        }
+
+        s += "]";
+
+        return s;
+    }
+
+    /// <summary>
+    /// Returns the basic data for the footer.
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static string GetAppDataFooter(dynamic n)
+    {
+        string s = String.Empty;
+
+        s += "\"footer\": [";
+
+        var footerNode = n.Footer.First();
+        if (footerNode != null)
+        {
+            var footerItems = footerNode.Children.Where("Visible AND (NodeTypeAlias == \"FooterItem\")");
+
+            int i = 0;
+            foreach (var item in footerItems)
+            {
+                string strTitle = item.HasValue("appTitle") ? item.GetProperty("appTitle").Value : Helper.GetName(item);
+                string strText = item.HasValue("appDescription") ? item.GetProperty("appDescription").Value : item.HasValue("bodyText") ? item.GetProperty("bodyText").Value : String.Empty;
+
+                string strHref = "#";
+                string idLink = item.HasValue("linksTo") ? item.GetProperty("linksTo").Value : String.Empty;
+                if (!String.IsNullOrEmpty(idLink))
+                {
+                    dynamic linkNode = n.NodeById(idLink);
+                    if (linkNode != null && linkNode.Id > 0)
+                    {
+                        strHref += linkNode.NodeTypeAlias.ToLower() + "|id=" + linkNode.Id;
+                    }
+                }
+
+
+                s += (i > 0 ? ", " : String.Empty) + "{";
+                s += "\"id\": " + item.Id;
+                s += ", \"title\": " + Json.Encode(strTitle);
+                s += ", \"sub\": " + Json.Encode(strText);
+                s += ", \"href\": " + Json.Encode(strHref);
+                s += "}";
+
+                i++;
+            }
+        }
+
+        s += "]";
+
+
+        return s;
+    }
+    
+}

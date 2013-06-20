@@ -1,0 +1,145 @@
+﻿@using umbraco.MacroEngines;
+@using DigibizAdvancedMediaPicker;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    dynamic slideNode = null;
+    
+    bool bSingleItem = false; //Just retrieve a single item
+    
+    if (Model.NodeTypeAlias == "SectionDetails")
+    {
+        bSingleItem = true;
+        slideNode = Model.Slideshow.Where("Visible").First();
+        if (slideNode == null || slideNode.Id == 0)
+        {
+            slideNode = Helper.GetAncestorSlideshow(Model);
+        }
+    }
+    else
+    {
+        slideNode = Model.Slideshow.Where("Visible").First();
+        if (slideNode == null ||slideNode.Id == 0) 
+        {
+            slideNode = Helper.GetAncestorSlideshow(Model);
+        }
+    }
+    
+    
+    if (slideNode != null && slideNode.Id > 0)
+    {
+        var slideItems = slideNode.Children.Where("Visible AND NodeTypeAlias == \"SlideshowItem\"");
+        
+        if (bSingleItem) {
+            slideItems = slideItems.Take(1);
+        }
+        var c = slideItems.Count();
+        
+        if (c > 0) {
+        
+            bool bFrontpage = Model.NodeTypeAlias == "FrontPage";
+            string strCrop = bFrontpage ? "FrontpageSlide" : "SectionSlide"; //FIXME: more options - set as Macro parameter?
+
+            if (bFrontpage)
+            {
+            @:<div class="grid_3 slider_wrapper">
+            @:<div class="slider">
+            }
+            else
+            {
+            @:<div class="grid_2 small_slider_wrapper">
+            @:<div class="small_slider">
+            }
+        
+            foreach(var item in slideItems)
+            {
+                @renderSliderItem(item, strCrop);         
+            }
+        
+            @:</div>
+
+            if (c > 1) {
+                if (bFrontpage) 
+                {
+                @:<div id="prev"></div>         
+                @:<div id="next"></div>
+                }
+                else
+                {
+                @:<div class="slide_nav">
+                @:<div id="small_prev"></div>
+                @:<div id="small_next"></div>
+                @:</div>
+                }
+            }
+    
+            //Check for logo for SectionDetails doctype:
+            if (Model.HasValue("logo"))
+            {
+                var nImg = Model.logo;
+                if (nImg != null)
+                {
+                    string strSrc = DAMP_Helper.GetImageCropperUrl(nImg, "SectionIcon");
+                   if (!String.IsNullOrEmpty(strSrc))
+                   {
+                   @:<div class="logo"><img src="@strSrc" alt="" /></div>
+                   }
+                }
+            }
+            
+            
+            @:</div>    
+        }    
+    }
+}
+@helper renderSliderItem(dynamic n, string strCrop)
+{
+    string strTitle = String.Empty;
+    string strText = String.Empty;
+    string strDescription = String.Empty;
+
+    //FIXME: selected crop depends on parent page doc type.
+    
+    if (n.HasValue("image")) {
+        var nImg = n.image;
+        if (nImg != null) 
+        {
+            string strSrc = DAMP_Helper.GetImageCropperUrl(nImg, strCrop);
+            strTitle = Helper.GetName(n);
+            strDescription = n.HasValue("description") ? n.GetProperty("description").Value : String.Empty;
+
+            //string strBgColor = Helper.GetSectionColor(Model);
+            
+            
+            string strLink = n.HasValue("videoURL") ? n.GetProperty("videoURL").Value : String.Empty;
+            
+            @:<div class="slide">
+            if (!String.IsNullOrEmpty(strLink))
+            {
+                if (Model.NodeTypeAlias == "FrontPage")
+                {
+                    @:<a href="@strLink" onclick="window.open(this.href); return false;">
+                }
+                else 
+                {
+                    @:<a href="@strLink">                
+                }
+            }                
+            @:<img src="@strSrc" alt="" />
+            if (!String.IsNullOrEmpty(strLink))
+            {
+                @:</a>
+            }
+            @:<div class="slide_inner">@*@Html.Raw(!String.IsNullOrEmpty(strBgColor) ? " style=\"background-color: #" + strBgColor + "\";" : "")>*@
+            @:<h3>@strTitle</h3>               
+                
+            if (!String.IsNullOrEmpty(strDescription))
+            {
+                @:<p>@strDescription</p>
+            }
+     
+            @:</div>
+            @:</div>                    
+        }
+    }
+    
+}             

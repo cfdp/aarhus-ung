@@ -1,0 +1,21 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    
+    string strTitle = "<h1>" + Helper.GetName(Model) + "</h1>";
+    string strBodyText = Model.HasValue("bodyText") ? Model.GetProperty("bodyText").Value : String.Empty;
+    if (!String.IsNullOrEmpty(strBodyText))
+    {
+        if (Model.NodeTypeAlias == "Section")
+        {
+        @:<div class="body_text content_box">
+        @:@Html.Raw(@strTitle + @strBodyText)
+        @:</div>
+        }
+        else if (Model.NodeTypeAlias == "SectionDetails") {
+        @:<div class="body_text box_1_5">
+        @:@Html.Raw(@strTitle + @strBodyText)
+        @:</div>
+        }
+    }
+}

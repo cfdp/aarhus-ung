@@ -1,0 +1,76 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@try
+{
+    string reqCallback = HttpContext.Current.Request["callback"];
+    reqCallback = !String.IsNullOrEmpty(reqCallback) ? reqCallback.Trim() : "callback";
+    
+    //Request node by path:
+    string reqPath = HttpContext.Current.Request["path"];
+    reqPath = !String.IsNullOrEmpty(reqPath) ? reqPath.Trim() : String.Empty;
+
+    //Request node by id:
+    string reqId = HttpContext.Current.Request["id"];
+    reqId = !String.IsNullOrEmpty(reqId) ? reqId.Trim() : String.Empty;
+
+    
+    
+    DynamicNode myNode = null;
+   
+    if (!String.IsNullOrEmpty(reqId))
+    {
+        myNode = Model.NodeById(reqId);
+        if (myNode != null && myNode.Id > 0 && myNode.Visible)
+        {
+            @renderSuccess("Found", reqCallback, AppUtilities.GetAppData(myNode));
+        }
+        else
+        {   @renderError("Not found", reqCallback);
+        
+        }                    
+    }
+    else if (!String.IsNullOrEmpty(reqPath))
+    {
+        int nodeId = 0;
+        nodeId = uComponents.XsltExtensions.Nodes.GetNodeIdByUrl(reqPath);
+        if (nodeId > 0) 
+        {
+            myNode = Model.NodeById(nodeId);
+            if (myNode != null && myNode.Id > 0 && myNode.Visible)
+            {
+                @renderSuccess("Found", reqCallback, AppUtilities.GetAppData(myNode));
+            }
+            else 
+            {
+                @renderError("Found, but not visible", reqCallback);
+            }
+        }
+        else 
+        {
+            @renderError("Not found", reqCallback);
+        }
+    }
+    else 
+    {
+        @renderError("No path supplied", reqCallback);
+    }
+}
+catch (Exception e)
+{ 
+    @renderException(e, "callback");   
+}
+
+@helper renderError(string s, string cb)
+{
+@:({ "status": 0, "msg": @Html.Raw(Json.Encode(s)) })    
+}
+
+@helper renderException(Exception e, string cb)
+{
+@:@(@cb)({ "status": -1, "msg": "" })    
+}
+
+@helper renderSuccess(string s, string cb, string data)
+{
+@:@(@cb)({ "status": 1, "msg": @Html.Raw(Json.Encode(s)), "data": @Html.Raw(data) })
+}

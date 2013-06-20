@@ -1,0 +1,1007 @@
+﻿@charset "utf-8";
+/* CSS Document for Arhus Ung v.1.0 */
+
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    /*list-style: none;*/
+    margin: 0;
+    padding: 0;
+}
+
+    ol li,
+    ul li {
+        margin: 0 0 0 15px;
+        padding: 0;
+    }
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* ---- End of reset styles -----*/
+
+/* Fonts @font-face */
+
+
+
+
+
+@font-face {
+    font-family: 'proxima_nova_rgregular';
+    src: url('fonts/proximanova-regular-webfont.eot');
+    src: url('fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-regular-webfont.woff') format('woff'),
+         url('fonts/proximanova-regular-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'proxima_nova_rgbold';
+    src: url('fonts/proximanova-bold-webfont.eot');
+    src: url('fonts/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanova-bold-webfont.woff') format('woff'),
+         url('fonts/proximanova-bold-webfont.ttf') format('truetype'),
+         url('fonts/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'maven_promedium';
+
+    src: url('fonts/mavenpro-medium.eot');
+    src: url('fonts/mavenpro-medium.eot?#iefix') format('embedded-opentype'), 
+         url('fonts/mavenpro-medium.woff') format('woff'), 
+         url('fonts/mavenpro-medium.ttf') format('truetype'), 
+         url('fonts/mavenpro-medium.svg#maven_promedium') format('svg');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'maven_pro';
+
+    src: url('fonts/mavenpro-regular.eot');
+    src: url('fonts/mavenpro-regular.eot?#iefix') format('embedded-opentype'), 
+         url('fonts/mavenpro-regular.woff') format('woff'), 
+         url('fonts/mavenpro-regular.ttf') format('truetype'), 
+         url('fonts/mavenpro-regular.svg#maven_pro') format('svg');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
+
+
+/* End of Fonts @font-face styles */
+body {
+    /*background: #fff url(images/bg-body.jpg) repeat-x center 149px;*/
+    background: #fff url(images/bg-body.jpg) repeat-x center 129px;
+}
+
+    body.modal {
+        background: #fff;
+    }
+
+/*Typography */
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'maven_pro', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+/* Header Styles 
+========================================== */
+.container_wide {
+    background: #FFF;
+    -moz-box-shadow: 0 1px 10px #dbdbdb;
+    -webkit-box-shadow: 0 1px 10px #dbdbdb;
+    box-shadow: 0 1px 10px #dbdbdb;
+    margin-bottom: 30px;
+}
+
+.container_inner {
+    width: 960px;
+    margin: 20px 10px;
+    float: left;
+    padding-top: 20px;
+}
+
+.header {
+    width: 100%;
+    /*height: 150px;*/
+    height: 130px;
+    background: #fff url(images/grad-line.jpg) bottom left no-repeat;
+    position: relative;
+}
+
+a.logo {
+    display: block;
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+}
+
+
+ul.menu {
+    list-style: none;
+    position: absolute;
+    /*top: 112px;*/
+    top: 92px;
+    right: 0;
+    margin: 0;
+    padding: 0 20px 0 0;
+    background: transparent url(images/bg-menu-line.png) 100% 36px no-repeat;
+}
+
+    ul.menu li {
+        margin: 0;
+        padding: 0;
+        float: left;
+    }
+
+
+        ul.menu li a {
+            font-family: 'proxima_nova_rgbold';
+            font-weight: normal;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #000;
+            text-decoration: none;
+            position: relative;
+            display: block;
+            height: 55px;
+            line-height: 22px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+            text-align: center;
+            background: transparent url(images/bg-menu-item.png) 100% 36px repeat-x;
+        }
+
+            ul.menu li.current a,
+            ul.menu li a:hover {
+                background: transparent url(images/bg-menu-arrow.png) center 36px no-repeat;
+            }
+
+            ul.menu li a span {
+                display: inline-block;
+                padding: 0 8px;
+                border-left: 1px solid #d0e255;
+                text-align: center;
+            }
+
+        ul.menu li:first-child a span {
+            border-left: none;
+        }
+
+        ul.menu li.last a span {
+            padding-right: 0;
+        }
+
+
+
+
+
+
+
+
+
+
+/* slider */
+.slider_wrapper {
+    margin-bottom: 25px;
+    height: 425px;
+    position: relative;
+}
+
+.slider {
+    height: 425px;
+}
+
+.slide_inner {
+    position: absolute;
+    top: 50%;
+    margin-top: -33px;
+    right: 0;
+    width: 300px;
+    height: auto;
+    min-height: 66px;
+    background: #dd046f;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    display: none;
+}
+
+
+
+
+
+    .slide_inner h3,
+    .slide_inner h3 a {
+        font-family: 'proxima_nova_rgbold';
+        font-size: 17px;
+        color: #FFF;
+        text-decoration: none;
+        font-weight: normal;
+        text-transform: uppercase;
+        line-height: 24px;
+    }
+
+    .slide_inner p {
+        font-family: 'proxima_nova_rgbold';
+        font-size: 17px;
+        color: #FFF;
+        font-weight: lighter;
+    }
+
+
+
+
+
+
+#prev {
+    width: 30px;
+    height: 44px;
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    margin-top: -22px;
+    cursor: pointer;
+    background: url(images/slider-arr1.png) bottom right no-repeat;
+    z-index: 100;
+}
+
+#next {
+    width: 30px;
+    height: 44px;
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    margin-top: -22px;
+    cursor: pointer;
+    background: url(images/slider-arr1.png) top left no-repeat;
+    z-index: 100;
+}
+
+
+
+.link_box {
+    height: 136px;
+    position: relative;
+    margin-bottom: 25px;
+    background: #ccc url(images/bg-link-box.png) top left repeat-x;
+    color: #fff;
+}
+
+
+    .link_box a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        background: url(images/plus.png) bottom right no-repeat;
+        text-decoration: none;
+        padding: 15px;
+        color: #FFF;
+    }
+
+        .link_box a span.title {
+            font-family: 'proxima_nova_rgbold';
+            font-size: 17px;
+            margin-bottom: 5px;
+            display: block;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .link_box a span.teaser {
+            font-family: 'maven_pro';
+            font-size: 14px;
+            line-height: 20px;
+            display: block;
+            font-weight: normal;
+        }
+
+        .link_box a span.plus {
+            display: none;
+        }
+
+
+
+.sub .link_box {
+    background-image: none;
+}
+
+    .sub .link_box a {
+        background-image: url(images/bg-link-box-a.png);
+    }
+
+        .sub .link_box a:hover {
+            background-image: none;
+        }
+
+        .sub .link_box a span.plus {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 41px;
+            height: 37px;
+            display: block;
+            background: transparent url(images/plus-transp.png) bottom right no-repeat;
+        }
+
+
+.app_box {
+    position: relative;
+    height: 136px;
+    margin-bottom: 25px;
+    background: url(images/appbg.jpg) top left no-repeat;
+}
+
+.stripe {
+    position: absolute;
+    top: -5px;
+    right: -4px;
+    width: 123px;
+    height: 123px;
+    background: url(images/stripe.png) right top no-repeat;
+}
+
+.app_box a {
+    display: block;
+    width: 113px;
+    position: absolute;
+    text-indent: -9999em;
+    text-decoration: none;
+    height: 136px;
+    line-height: 136px;
+    top: 0;
+    z-index: 10;
+}
+
+    .app_box a.app-ios {
+        left: 7px;
+        background: url(images/appicon-ios.png) center center no-repeat;
+    }
+
+    .app_box a.app-an {
+        left: 130px;
+        background: url(images/appicon-an.png) center center no-repeat;
+    }
+
+
+
+/*footer box*/
+.footer_box {
+    background: transparent url(images/bg-footer.png) 0 0 no-repeat;
+    color: #fff;
+    min-height: 120px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.footer_col {
+    width: 300px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+    float: left;
+}
+
+    .footer_col.last {
+        float: right;
+        margin-right: 20px;
+    }
+
+    .footer_col h2 {
+        font-family: 'proxima_nova_rgregular';
+        color: #FFF;
+        font-size: 17px;
+        font-weight: normal;
+        margin-bottom: 5px;
+        letter-spacing: 0.08em;
+    }
+
+    .footer_col p {
+        font-family: 'maven_pro';
+        color: #FFF;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: normal;
+    }
+
+        .footer_col p a {
+            font-family: 'maven_pro';
+            color: #FFF;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: normal;
+        }
+
+p.copyright {
+    font-family: 'maven_pro';
+    color: #050708;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal;
+    margin-left: 10px;
+    display: block;
+    float: left;
+}
+
+    p.copyright img {
+        margin-right: 10px;
+    }
+
+    p.copyright * {
+        vertical-align: middle;
+    }
+
+
+/*Sidebar menu*/
+.sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .sidebar ul li {
+        padding: 0 0 10px 0;
+        margin: 0 0 10px 0;
+        /*padding-bottom: 10px;
+        margin-bottom: 10px;*/
+        border-bottom: 1px solid #d2d2d2;
+    }
+
+        .sidebar ul li a {
+            font-size: 17px;
+            font-family: 'proxima_nova_rgregular';
+            color: #1b1b1b;
+            font-weight: normal;
+            text-decoration: none;
+        }
+
+            .sidebar ul li a:hover,
+            .sidebar ul li.current > a {
+                color: #1b1b1b;
+            }
+
+
+    .sidebar ul ul {
+        margin-top: 10px;
+    }
+
+        .sidebar ul ul li {
+            border-bottom: none;
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+
+
+/* slider */
+.slider_wrapper .logo,
+.small_slider_wrapper .logo {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 111px;
+    height: 75px;
+    background: #fff;
+    text-align: center;
+    z-index: 2;
+}
+
+    .slider_wrapper .logo *,
+    .small_slider_wrapper .logo * {
+        white-space: nowrap;
+        display: inline-block;
+        margin: 3px auto 0 auto;
+    }
+
+
+.small_slider_wrapper {
+    margin-bottom: 25px;
+    height: 280px;
+    position: relative;
+}
+
+.small_slider {
+    /*height: 425px;*/
+    position: relative;
+}
+
+    .small_slider .slide_inner {
+        position: absolute;
+        top: 199px;
+        bottom: 15px;
+        margin-top: 0;
+        right: 0;
+        left: 12px;
+        width: 596px;
+        height: 66px;
+        min-height: 66px;
+        background: #5f9529;
+        /*background: #ccc;*/
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        display: none;
+        z-index: 10;
+    }
+
+        .small_slider .slide_inner h3,
+        .small_slider .slide_inner h3 a {
+            font-family: 'proxima_nova_rgbold';
+            font-size: 17px;
+            color: #FFF;
+            text-decoration: none;
+            font-weight: normal;
+            text-transform: uppercase;
+            line-height: 24px;
+            letter-spacing: 0.07em;
+        }
+
+        .small_slider .slide_inner p {
+            font-family: 'proxima_nova_rgregular';
+            font-size: 17px;
+            color: #FFF;
+            font-weight: normal;
+        }
+
+.slide_nav {
+    position: absolute;
+    width: 84px;
+    height: 66px;
+    right: 12px;
+    bottom: 15px;
+    z-index: 200;
+}
+
+    .slide_nav div {
+        cursor: pointer;
+        float: left;
+        width: 41px;
+        height: 66px;
+        margin-left: 1px;
+        background: transparent url(images/bg-slider.png) 0 0 no-repeat;
+    }
+
+#small_prev {
+    background-position: 0 0;
+}
+
+#small_next {
+    background-position: -41px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*subpage*/
+.main_image {
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 23px;
+}
+
+.logo_image {
+    position: absolute;
+    bottom: 5px;
+    left: 6px;
+}
+
+.body_text {
+    padding: 15px;
+    background: #545454;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 14px;
+    clear: both;
+}
+
+.content_box .body_text {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.content_box {
+    margin-bottom: 23px;
+}
+
+
+
+.body_text {
+    font-family: 'maven_pro', Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+    .body_text h1 {
+        font-size: 17px;
+        font-family: 'proxima_nova_rgbold', Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 0.08em;
+    }
+
+    .body_text ul {
+        list-style: disc;
+        margin-bottom: 15px;
+        margin-left: 20px;
+    }
+
+    .body_text ol {
+        list-style: decimal;
+        margin-bottom: 15px;
+        margin-left: 20px;
+    }
+
+    .body_text p {
+        margin-bottom: 15px;
+    }
+
+    .body_text a {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+
+
+
+
+
+
+.box_1_5 {
+    background: #545454;
+    width: 450px;
+    float: left;
+    height: auto;
+    min-height: 238px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 14px 18px;
+}
+
+.body_text h2 {
+    font-family: 'proxima_nova_rgbold';
+    font-size: 17px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 24px;
+    letter-spacing: 0.07em;
+    margin-bottom: 5px;
+}
+
+.body_text p {
+    font-family: 'maven_pro';
+    color: #FFF;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal;
+}
+
+.contact_wrapper {
+    float: right;
+    width: 150px;
+}
+
+    .contact_wrapper ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .contact_wrapper ul li {
+            width: 150px;
+            height: 55px;
+            margin: 6px 0 0 0;
+            padding: 0;
+            /*margin-top: 6px;*/
+            background: #545454 url(images/bg-contact-item.png) 0 0 no-repeat;
+        }
+
+            .contact_wrapper ul li:first-child {
+                margin-top: 0;
+            }
+
+            .contact_wrapper ul li a {
+                width: 150px;
+                height: 55px;
+                line-height: 55px;
+                font-weight: normal;
+                font-family: 'proxima_nova_rgbold', Arial, Helvetica, sans-serif;
+                font-size: 19px;
+                letter-spacing: 2px;
+                color: #fff;
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-indent: 200px;
+                text-decoration: none;
+                background-color: transparent;
+                background-position: 0 0;
+                background-repeat: no-repeat;
+            }
+
+            .contact_wrapper ul li.www a {
+                background-image: url(images/contact-www.png);
+            }
+
+            .contact_wrapper ul li.phone a {
+                background-image: url(images/contact-phone.png);
+            }
+            .contact_wrapper ul li.phone.opened a {
+                background-image: none;
+                text-indent: 0;
+                text-align: center;
+            }
+
+            .contact_wrapper ul li.email a {
+                background-image: url(images/contact-email.png);
+            }
+
+            .contact_wrapper ul li.map a {
+                background-image: url(images/contact-map.png);
+            }
+
+
+
+/*modal box*/
+.modal_wrapper {
+    width: 640px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 20px;
+    background: #FFF;
+    font-family: 'maven_pro';
+}
+
+    .modal_wrapper h3 {
+        font-family: 'proxima_nova_rgbold';
+        font-size: 17px;
+        margin-bottom: 5px;
+        display: block;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #000;
+    }
+
+    .modal_wrapper p {
+        font-family: 'maven_pro';
+        color: #000;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: normal;
+    }
+
+.media_wrapper {
+    margin-bottom: 30px;
+}
+
+ul.people {
+    list-style-type: none;
+    margin-top: 30px;
+}
+
+    ul.people li {
+        width: 50%;
+        float: left;
+        margin-bottom: 30px;
+    }
+
+        ul.people li img {
+            display: block;
+            float: left;
+            margin-right: 10px;
+        }
+
+
+
+/*superbox overides*/
+
+#superbox {
+    padding: 0;
+    position: relative;
+}
+
+#superbox-innerbox {
+    padding: 0;
+}
+
+    #superbox-innerbox > iframe {
+        position: relative;
+        z-index: 1;
+    }
+
+#superbox p.close {
+    margin: 0;
+    overflow: hidden;
+    display: block;
+    float: right;
+    width: 59px;
+    height: 58px;
+    margin: 0 0 -59px 0;
+    position: relative;
+    z-index: 2;
+}
+
+#superbox .close a {
+    margin: 0;
+    overflow: hidden;
+    text-indent: -9999em;
+    display: block;
+    float: right;
+    width: 59px;
+    height: 58px;
+    background: url(images/close.png) top right no-repeat;
+    cursor: pointer;
+}
+
+
+
+
+/*form*/
+.field {
+    width: 100%;
+    margin: 15px 0;
+    float: left;
+}
+
+    .field label {
+        font-family: 'maven_promedium';
+        color: #000;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: normal;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .field input {
+        font-family: 'maven_pro';
+        color: #000;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: normal;
+        display: block;
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 45px;
+        line-height: 35px;
+        padding: 5px 10px;
+        background: #f7f7f7;
+        border: 1px solid #d6d6d6;
+        -moz-box-shadow: inset 3px 3px 5px #e3e3e3;
+        -webkit-box-shadow: inset 3px 3px 5px #e3e3e3;
+        box-shadow: inset 3px 3px 5px #e3e3e3;
+    }
+
+        .field input:focus,
+        .field textarea:focus {
+            border: 1px solid #000000;
+        }
+
+    .field textarea {
+        font-family: 'maven_pro';
+        color: #000;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: normal;
+        display: block;
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 200px;
+        line-height: 24px;
+        padding: 10px;
+        background: #f7f7f7;
+        border: 1px solid #d6d6d6;
+        -moz-box-shadow: inset 3px 3px 5px #e3e3e3;
+        -webkit-box-shadow: inset 3px 3px 5px #e3e3e3;
+        box-shadow: inset 3px 3px 5px #e3e3e3;
+    }
+
+    .field button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: #000;
+        border: none;
+        height: 60px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        line-height: 59px;
+        font-family: 'proxima_nova_rgbold';
+        font-size: 21px;
+        color: #FFF;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-weight: normal;
+        letter-spacing: 0.1em;
+    }
+
+/* EDITOR PROPERTIES - PLEASE DON'T DELETE THIS LINE TO AVOID DUPLICATE PROPERTIES */

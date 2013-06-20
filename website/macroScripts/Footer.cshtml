@@ -1,0 +1,104 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@try
+{
+    var rootNode = Model.AncestorOrSelf("FrontPage");
+    if (rootNode != null) {
+        var footerNode = rootNode.Footer.First();
+        
+        if (footerNode != null)
+        {
+            string strFooterText = rootNode.HasValue("footerText") ? rootNode.GetProperty("footerText").Value : String.Empty;
+            
+            var footerItems = footerNode.Children.Where("Visible AND (NodeTypeAlias == \"FooterItem\")");
+            var c = footerItems.Count();
+            var i = 1;
+            if (c > 0)
+            {
+                @:<div id="footer" class="grid_3 footer_box">
+                foreach (var item in footerItems)
+                {
+                    string strTitle = Helper.GetName(item);
+                    string strText = item.HasValue("bodyText") ? item.GetProperty("bodyText").Value : String.Empty;
+                    
+                    
+                    string strLinkText = item.HasValue("linkText") ? item.GetProperty("linkText").Value : String.Empty;
+                    string idLink = item.HasValue("linksTo") ? item.GetProperty("linksTo").Value : String.Empty;
+
+                    string strLink = String.Empty;
+                    string strLinkTitle = String.Empty;
+                    
+                    if (!String.IsNullOrEmpty(idLink))
+                    {
+                        var nodeLink = Model.NodeById(idLink);
+                        if (nodeLink != null && nodeLink.Id > 0) 
+                        {
+                            bool bDialog = item.HasValue("openLinkInDialog") ? item.GetProperty("openLinkInDialog").Value == "1" : false;
+                            int wDialog = 0;
+                            int hDialog = 0;
+
+                            int.TryParse(item.GetProperty("dialogWidth").Value, out wDialog);
+                            int.TryParse(item.GetProperty("dialogHeight").Value, out hDialog);
+
+                            string strUrl = Helper.GetUrl(nodeLink);
+                            strLinkTitle = Helper.GetName(nodeLink);
+                            
+                            
+                            strLink = "<a href=\"" + strUrl + "\"";
+                                
+                            if (bDialog && wDialog > 0 && hDialog > 0) 
+                            {
+                                //strUrl += "?v=dialog";
+                                //strLink += " rel=\"superbox[ajax][" + strUrl + "][" + wDialog + "x" + hDialog + "]\"";
+                                strLink += " rel=\"superbox[iframe][" + wDialog + "x" + hDialog + "]\"";
+                            }                                
+                                
+                            strLink += " title=\"" + HttpUtility.HtmlAttributeEncode(strLinkTitle) + "\">" +  strLinkText+ "</a>";
+
+                            if (strText.EndsWith("</p>"))
+                            {
+                                strText = strText.Substring(0, strText.Length - 4) + " " + strLink + "</p>";
+                            }
+                            else 
+                            {
+                                strText += strLink;
+                            }
+                            
+                        }
+                    }
+                    
+
+                    string strClass = "footer_col";
+                    if (i == c) {
+                        strClass += " last";
+                    }
+                    strClass = strClass.Trim();
+                    
+                    @:<div class="@strClass">
+                    @:<h2>@strTitle</h2>
+                    @:@Html.Raw(strText) 
+
+                    @:</div>
+                    
+                    i++;
+                }
+                @:</div>
+                <script type="text/javascript">
+                    // <![CDATA[
+                    $(function () {
+                        AARHUSUNG.initFooter();
+                    });
+                    // ]]>
+                </script>
+            }
+
+            @:<p class="copyright"><a href="http://www.aarhus.dk" onclick="window.open(this.href); return false;"><img src="/images/logo-aarhus-kommune.png" width="103" height="51" alt="Aarhus Kommune" title="" /></a>@strFooterText</p>
+        }
+    }
+}
+catch (Exception e)
+{ 
+    @:<!--
+    @:@Html.Raw(e.Message + "\n" + e.StackTrace)
+    @:-->
+}

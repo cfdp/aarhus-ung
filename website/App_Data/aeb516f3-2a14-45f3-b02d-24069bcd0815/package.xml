@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+	<files><file><guid>ad1a770d-46b6-4582-b45d-a41da804af41.dll</guid><orgPath>/bin</orgPath><orgName>Our.Umbraco.StructureExtensions.dll</orgName></file><file><guid>43b489cd-e697-4fe0-bfcc-93464315b65b.config</guid><orgPath>/config</orgPath><orgName>StructureExtensions.config</orgName></file></files>
+	<info>
+		<package>
+			<name>Structure Extensions</name>
+			<version>1.0</version>
+			<license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+			<url>http://our.umbraco.org/projects/backoffice-extensions/structure-extensions</url>
+			<requirements>
+				<major>4</major>
+				<minor>7</minor>
+				<patch>0</patch>
+			</requirements>
+		</package>
+		<author>
+			<name>Tom Fulton</name>
+			<website>http://our.umbraco.org/member/7606</website>
+		</author>
+		<readme><![CDATA[This package enables several enhancements to the Structure features of Document & Media Types.
+FEATURES:
+==============================================
+* Default Document & Media Types
+* Control Allowed Document & Media Types at Root Level
+==============================================
+For example, you can set Textpage to be the Default Document Type under your Homepage, and you can set only Folders to be allowed in the Root Level of the Media section.
+For more information, please see the package website.]]></readme>
+	</info>
+	<DocumentTypes />
+	<Templates />
+	<Stylesheets />
+	<Macros />
+	<DictionaryItems />
+	<Languages />
+	<DataTypes />
+	<Actions>
+		<Action runat="install" undo="true" alias="StructureExtensions_AddConfigSection" />
+	</Actions>
+</umbPackage>

@@ -1,0 +1,78 @@
+﻿@using umbraco.MacroEngines;
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@try
+{
+    string reqCallback = HttpContext.Current.Request["callback"];
+    reqCallback = !String.IsNullOrEmpty(reqCallback) ? reqCallback.Trim() : "callback";
+
+    string reqAction = HttpContext.Current.Request["action"];
+    reqAction = !String.IsNullOrEmpty(reqAction) ? reqAction.Trim() : String.Empty;
+    
+    switch (reqAction)
+    {
+        case "submitcontact":
+            //Our contact node id (hardcoded!!!):
+            int nodeId = 1271;
+
+            //Fetch the contact node:
+            DynamicNode n = Model.NodeById(nodeId);
+            if (n != null && n.Id > 0) 
+            {
+                string reqEmail = HttpContext.Current.Request["email"];
+                string reqMessage = HttpContext.Current.Request["message"];
+                
+                //Attempt to submit contact form data:
+                if (ContactUtilities.SubmitContactForm(n, reqEmail, reqMessage))
+                {
+                    //Build JSON to parse upon success:
+                    string s = String.Empty;
+                    s += "{";
+                    s += "\"doneText\": " + Json.Encode(ContactUtilities.GetDoneText(n));
+                    s += "}";
+                    
+                    @renderSuccess("Contact mail sent", reqCallback, s);
+                }
+                else 
+                {
+                    @renderError("Invalid data", reqCallback);
+                }
+            }
+            else 
+            {
+                @renderError("Contact page not found.", reqCallback);
+            }
+            
+            break;
+            
+        default:
+            @renderError("No action supplied.", reqCallback)
+            break;
+    }
+    
+    
+    
+    
+}
+catch (Exception e)
+{ 
+    @renderException(e, "callback");   
+}
+@helper renderError(string s, string cb)
+{
+@:({ "status": 0, "msg": @Html.Raw(Json.Encode(s)) })    
+}
+
+@helper renderException(Exception e, string cb)
+{
+@:@(@cb)({ "status": -1, "msg": "" })    
+}
+
+@helper renderSuccess(string s, string cb, string data)
+{
+@:@(@cb)({ "status": 1, "msg": @Html.Raw(Json.Encode(s)), "data": @Html.Raw(data) })
+}
+
+@helper renderResponse(int statusCode, string s, string cb, string data)
+{
+    @:@(@cb)({ "status": @statusCode, "msg": @Html.Raw(Json.Encode(s)), "data": @Html.Raw(data) })    
+}
